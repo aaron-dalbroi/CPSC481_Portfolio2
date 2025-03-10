@@ -1,12 +1,12 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
 
-// Create the Vue app instance
-const app = createApp(App);
+loadFonts()
 
-// Use the router with the app
-app.use(router);
-
-// Mount the app to the DOM element with id="app" in index.html
-app.mount("#app");
+createApp(App)
+  .use(router)
+  .use(vuetify)
+  .mount('#app')
