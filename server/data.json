@@ -108,12 +108,12 @@
 				{
 					"course": "CS205",
 					"semester": "Fall 2024",
-					"completionStatus": "Completed"
+					"completionStatus": "Incomplete"
 				},
 				{
 					"course": "CS206",
 					"semester": "Fall 2024",
-					"completionStatus": "Completed"
+					"completionStatus": "Inomplete"
 				}
 			],
 			"starredCourses": ["CPSC300", "STAT300"]

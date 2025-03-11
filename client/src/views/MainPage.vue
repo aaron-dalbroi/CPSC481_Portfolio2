@@ -22,75 +22,99 @@
 			<v-timeline-item
 				v-if="user.currentCourses && user.currentCourses.length"
 				:key="'current-courses'"
-				dot-color="teal"
-				size="small"
+				dot-color="teal-lighten-3"
+				size="large"
 			>
-				<div class="d-flex">
-					<!-- Get the semester from the first current course -->
-					<strong class="me-4">
-						{{ user.currentCourses[0].semester }}
-					</strong>
-					<div>
-						<strong>Current Courses</strong>
+				<template v-slot:icon>
+					<v-avatar color="teal" size="24px"> </v-avatar>
+				</template>
+				<template v-slot:opposite>
+					<span>{{ user.currentCourses[0].semester }}</span>
+				</template>
+				<v-card class="elevation-2">
+					<v-card-title class="text-h5">Current Courses</v-card-title>
+					<v-card-text>
 						<v-slide-group multiple class="d-flex">
 							<v-slide-item
 								v-for="course in user.currentCourses"
 								:key="course.course"
 								class="mb-2"
 							>
-								<v-card class="pa-4" outlined>
-									<v-card-title>
-										{{ course.course }}
-										<v-spacer />
+								<!-- Make each course a button -->
+								<v-btn
+									:to="{
+										name: 'course-overview',
+										params: { courseId: course.course },
+									}"
+									block
+									class="course-btn"
+								>
+									<!-- Course Title and Icon centered -->
+									<div class="d-flex justify-center align-center">
+										<span class="course-name">{{ course.course }}</span>
 										<v-icon
+											class="course-icon"
 											:color="
 												course.completionStatus === 'In Progress'
 													? 'blue'
 													: 'gray'
 											"
-											class="float-right"
 										>
 											mdi-progress-check
 										</v-icon>
-									</v-card-title>
-									<v-card-subtitle>{{
+									</div>
+									<!-- Status on the top-right -->
+									<v-card-subtitle class="status">{{
 										course.completionStatus
 									}}</v-card-subtitle>
-								</v-card>
+								</v-btn>
 							</v-slide-item>
 						</v-slide-group>
-					</div>
-				</div>
+					</v-card-text>
+				</v-card>
 			</v-timeline-item>
 
 			<!-- Past Courses -->
 			<v-timeline-item
 				v-for="(courses, semester) in sortedGroupedPastCourses"
 				:key="semester"
-				dot-color="teal-lighten-3"
-				size="small"
+				dot-color="teal"
+				size="large"
 			>
-				<div class="d-flex">
-					<strong class="me-4">{{ semester }}</strong>
-					<div>
-						<strong>Courses Taken</strong>
+				<template v-slot:icon>
+					<v-avatar color="teal" size="24px"> </v-avatar>
+				</template>
+				<template v-slot:opposite>
+					<span>{{ semester }}</span>
+				</template>
+				<v-card class="elevation-2">
+					<v-card-title class="text-h5">Courses Taken</v-card-title>
+					<v-card-text>
 						<v-slide-group multiple class="d-flex">
 							<v-slide-item
 								v-for="course in courses"
 								:key="course.course"
 								class="mb-2"
 							>
-								<v-card class="pa-4" outlined>
-									<v-card-title>
-										{{ course.course }}
-										<v-spacer />
+								<!-- Make each course a button -->
+								<v-btn
+									:to="{
+										name: 'course-overview',
+										params: { courseId: course.course },
+									}"
+									block
+									class="course-btn"
+								>
+									<!-- Course Title and Icon centered -->
+									<div class="d-flex justify-center align-center">
+										<span class="course-name">{{ course.course }}</span>
 										<v-icon
+											class="course-icon"
 											:color="
 												course.completionStatus === 'Completed'
 													? 'green'
 													: 'red'
 											"
-											class="float-right"
 										>
 											{{
 												course.completionStatus === "Completed"
@@ -98,15 +122,16 @@
 													: "mdi-cancel"
 											}}
 										</v-icon>
-									</v-card-title>
-									<v-card-subtitle>{{
+									</div>
+									<!-- Status on the top-right -->
+									<v-card-subtitle class="status">{{
 										course.completionStatus
 									}}</v-card-subtitle>
-								</v-card>
+								</v-btn>
 							</v-slide-item>
 						</v-slide-group>
-					</div>
-				</div>
+					</v-card-text>
+				</v-card>
 			</v-timeline-item>
 		</v-timeline>
 	</v-container>
@@ -161,13 +186,41 @@ export default {
 </script>
 
 <style scoped>
-/* Add custom styles to adjust timeline positioning */
-.v-timeline {
-	margin-left: 20px; /* Shift timeline more to the left */
+/* Ensure all course buttons are the same size */
+.course-btn {
+	height: 120px; /* Set a consistent height for all buttons */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	text-align: center;
+	margin: 4px 0;
+	position: relative;
 }
 
+/* Center course name and icon */
+.course-name {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.course-icon {
+	font-size: 1.3rem;
+	margin-left: 8px;
+}
+
+/* Status on the top-right of the button */
+.status {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	font-size: 0.9rem;
+}
+
+/* Timeline adjustments */
 .v-timeline-item {
-	width: 300px; /* Adjust tile width */
+	width: 100%;
 }
 
 .v-slide-group {
@@ -178,6 +231,10 @@ export default {
 
 .d-flex {
 	display: flex;
+}
+
+.v-avatar {
+	background-color: teal;
 }
 
 .ml-2 {

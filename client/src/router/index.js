@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MainPage from "../views/MainPage.vue";
+import MainPage from "@/views/MainPage.vue";
+import CourseOverview from "@/views/CourseOverview.vue";
 
 const routes = [
 	{
-		path: "/", // Default route
-		name: "home",
+		path: "/",
+		name: "main-page",
 		component: MainPage,
+	},
+	{
+		path: "/course/:courseId",
+		name: "course-overview",
+		component: CourseOverview,
+		props: true, // Pass route params as props
 	},
 ];
 
