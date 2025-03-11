@@ -2,36 +2,249 @@
 	"users": [
 		{
 			"id": 1,
-			"displayName": "John Doe",
-			"email": "john@example.com",
+			"displayName": "Honky Dory",
+			"email": "hdory@example.com",
 			"password": "hashedpassword",
-			"yearOfProgram": 2,
+			"yearOfProgram": 3,
 			"programName": "Computer Science",
-			"currentCourses": ["CPSC101", "MATH200"],
+			"currentCourses": [
+				{
+					"course": "CPSC201",
+					"semester": "Winter 2025",
+					"completionStatus": "In Progress"
+				},
+				{
+					"course": "MATH250",
+					"semester": "Winter 2025",
+					"completionStatus": "In Progress"
+				},
+				{
+					"course": "STAT300",
+					"semester": "Winter 2025",
+					"completionStatus": "In Progress"
+				}
+			],
 			"pastCourses": [
 				{
 					"course": "CPSC100",
+					"semester": "Fall 2022",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "MATH100",
+					"semester": "Fall 2022",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CPSC101",
+					"semester": "Winter 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "MATH200",
+					"semester": "Winter 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CPSC210",
 					"semester": "Fall 2023",
+					"completionStatus": "Incomplete"
+				},
+				{
+					"course": "STAT200",
+					"semester": "Fall 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS101",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS102",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS103",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS104",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS105",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS106",
+					"semester": "Spring 2023",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS201",
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS202",
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS203",
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS204",
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS205",
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
+				},
+				{
+					"course": "CS206",
+					"semester": "Fall 2024",
 					"completionStatus": "Completed"
 				}
 			],
-			"starredCourses": ["CPSC300"]
+			"starredCourses": ["CPSC300", "STAT300"]
 		}
 	],
 	"courses": [
 		{
-			"id": "CPSC101",
+			"id": "CPSC100",
 			"name": "Intro to CS",
 			"description": "Basic programming concepts",
-			"semesterAvailability": ["Fall 2024", "Winter 2025"],
+			"semesterAvailability": ["Fall 2022"],
 			"prerequisites": []
+		},
+		{
+			"id": "MATH100",
+			"name": "Calculus I",
+			"description": "Introduction to calculus",
+			"semesterAvailability": ["Fall 2022"],
+			"prerequisites": []
+		},
+		{
+			"id": "CPSC101",
+			"name": "Intro to Programming",
+			"description": "Foundations of programming in Python",
+			"semesterAvailability": ["Winter 2023"],
+			"prerequisites": ["CPSC100"]
 		},
 		{
 			"id": "MATH200",
 			"name": "Calculus II",
 			"description": "Advanced calculus topics",
-			"semesterAvailability": ["Fall 2024"],
+			"semesterAvailability": ["Winter 2023"],
 			"prerequisites": ["MATH100"]
+		},
+		{
+			"id": "CPSC210",
+			"name": "Data Structures",
+			"description": "Introduction to data structures and algorithms",
+			"semesterAvailability": ["Fall 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "STAT200",
+			"name": "Intro to Statistics",
+			"description": "Fundamentals of probability and statistics",
+			"semesterAvailability": ["Fall 2023"],
+			"prerequisites": []
+		},
+		{
+			"id": "CS101",
+			"name": "Intro to CS - Advanced",
+			"description": "Advanced introduction to CS concepts",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC100"]
+		},
+		{
+			"id": "CS102",
+			"name": "Intermediate Programming",
+			"description": "Intermediate-level programming concepts and practices",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS103",
+			"name": "Algorithms",
+			"description": "Introduction to basic algorithms and their applications",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS104",
+			"name": "Computer Architecture",
+			"description": "Study of computer hardware and organization",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS105",
+			"name": "Operating Systems",
+			"description": "Introduction to operating systems and their management",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS106",
+			"name": "Databases",
+			"description": "Introduction to database management systems",
+			"semesterAvailability": ["Spring 2023"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS201",
+			"name": "Software Development",
+			"description": "Introduction to software engineering principles",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS202",
+			"name": "Advanced Software Engineering",
+			"description": "Advanced principles of software development and architecture",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CS201"]
+		},
+		{
+			"id": "CS203",
+			"name": "AI and Machine Learning",
+			"description": "Introduction to machine learning and AI concepts",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS204",
+			"name": "Network Systems",
+			"description": "Study of networking and network protocols",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS205",
+			"name": "Cybersecurity",
+			"description": "Introduction to cybersecurity concepts and practices",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CPSC101"]
+		},
+		{
+			"id": "CS206",
+			"name": "Cloud Computing",
+			"description": "Introduction to cloud computing technologies and services",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["CPSC101"]
 		}
 	]
 }
