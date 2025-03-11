@@ -21,6 +21,19 @@ router.get("/users", (req, res) => {
 	res.json(data.users);
 });
 
+// Get a single user by ID
+router.get("/users/:id", (req, res) => {
+	const data = loadData();
+	const userId = parseInt(req.params.id);
+	const user = data.users.find((u) => u.id === userId);
+
+	if (!user) {
+		return res.status(404).json({ message: "User not found" });
+	}
+
+	res.json(user);
+});
+
 // Add a new user
 router.post("/users", (req, res) => {
 	const data = loadData();
@@ -35,6 +48,19 @@ router.post("/users", (req, res) => {
 router.get("/courses", (req, res) => {
 	const data = loadData();
 	res.json(data.courses);
+});
+
+// Get a single course by ID
+router.get("/courses/:id", (req, res) => {
+	const data = loadData();
+	const courseId = req.params.id;
+	const course = data.courses.find((c) => c.id === courseId);
+
+	if (!course) {
+		return res.status(404).json({ message: "Course not found" });
+	}
+
+	res.json(course);
 });
 
 // Add a new course

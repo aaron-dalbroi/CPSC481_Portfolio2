@@ -156,11 +156,18 @@
 			"prerequisites": ["CPSC101"]
 		},
 		{
+			"id": "STAT300",
+			"name": "Advanced Statistics",
+			"description": "Fundamentals of probability and statistics",
+			"semesterAvailability": ["Fall 2023"],
+			"prerequisites": ["STAT200", "CS103"]
+		},
+		{
 			"id": "STAT200",
 			"name": "Intro to Statistics",
 			"description": "Fundamentals of probability and statistics",
 			"semesterAvailability": ["Fall 2023"],
-			"prerequisites": []
+			"prerequisites": ["MATH100"]
 		},
 		{
 			"id": "CS101",
