@@ -38,6 +38,10 @@
 
 							<span class="node-id">{{ node.id }}</span>
 							<span class="node-name">{{ node.name }}</span>
+							<v-icon
+								class="status-icon"
+								:icon="getCompletionIcon(node.id)"
+							></v-icon>
 						</div>
 					</template>
 				</vue-tree>
@@ -60,6 +64,7 @@ export default {
 		return {
 			course: {},
 			treeData: {},
+			userData: null, // Stores user data
 			treeConfig: {
 				nodeWidth: 120,
 				nodeHeight: 80,
@@ -71,22 +76,24 @@ export default {
 		};
 	},
 	async created() {
-		const courseId = this.$route.params.courseId;
 		try {
+			const courseId = this.$route.params.courseId;
 			const response = await axios.get(
 				`http://localhost:3000/api/courses/${courseId}`
 			);
 			this.course = response.data;
 
-			// Load all courses from the API or from local data
 			const allCoursesResponse = await axios.get(
 				"http://localhost:3000/api/courses"
-			); // Adjust this API endpoint if necessary
+			);
 			this.courseData = allCoursesResponse.data;
+
+			const userResponse = await axios.get("http://localhost:3000/api/users/1"); // Adjust user ID as needed
+			this.userData = userResponse.data;
 
 			this.setTreeData();
 		} catch (error) {
-			console.error("Error fetching course:", error);
+			console.error("Error fetching data:", error);
 		}
 	},
 	methods: {
@@ -95,7 +102,8 @@ export default {
 			this.treeData = {
 				id: this.course.id,
 				name: this.course.name,
-				children: this.buildPrerequisiteTree(prerequisites), // Build the tree synchronously
+				icon: this.getCompletionIcon(this.course.id), // Add status icon
+				children: this.buildPrerequisiteTree(prerequisites),
 			};
 		},
 
@@ -104,25 +112,16 @@ export default {
 			const tree = [];
 
 			for (const prereqId of prerequisiteIds) {
-				// Fetch course data for the current prerequisite
 				const prereqCourse = this.fetchCourseById(prereqId);
 				if (prereqCourse) {
 					const courseNode = {
 						id: prereqCourse.id,
 						name: prereqCourse.name,
-						children: [], // Initialize with an empty array for child prerequisites
+						icon: this.getCompletionIcon(prereqCourse.id), // Add icon here
+						children: prereqCourse.prerequisites?.length
+							? this.buildPrerequisiteTree(prereqCourse.prerequisites)
+							: [],
 					};
-
-					// Recursively fetch prerequisites for this course (if any)
-					if (
-						prereqCourse.prerequisites &&
-						prereqCourse.prerequisites.length > 0
-					) {
-						courseNode.children = this.buildPrerequisiteTree(
-							prereqCourse.prerequisites
-						);
-					}
-
 					tree.push(courseNode);
 				}
 			}
@@ -132,7 +131,30 @@ export default {
 
 		// Function to fetch course by its ID from the loaded courses
 		fetchCourseById(courseId) {
-			return this.courseData.find((course) => course.id === courseId); // This should work if courseData is correctly loaded
+			return this.courseData.find((course) => course.id === courseId);
+		},
+
+		// Determines the correct icon based on course completion status
+		getCompletionIcon(courseId) {
+			if (!this.userData) return "";
+
+			// Check if the course is in currentCourses
+			const currentCourse = this.userData.currentCourses.find(
+				(c) => c.course === courseId
+			);
+			if (currentCourse) return "mdi-progress-check"; // In Progress
+
+			// Check if the course is in pastCourses
+			const pastCourse = this.userData.pastCourses.find(
+				(c) => c.course === courseId
+			);
+			if (pastCourse) {
+				return pastCourse.completionStatus === "Completed"
+					? "mdi-checkbox-marked-circle" // Completed
+					: "mdi-cancel"; // Incomplete
+			}
+
+			return "";
 		},
 	},
 };
@@ -150,6 +172,13 @@ export default {
 	flex-direction: column;
 	align-items: center;
 }
+.status-icon {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: #555;
+}
+
 .star-icon {
 	position: absolute;
 	top: 5px;
