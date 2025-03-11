@@ -37,6 +37,19 @@ router.get("/courses", (req, res) => {
 	res.json(data.courses);
 });
 
+// Get a single course by ID
+router.get("/courses/:id", (req, res) => {
+	const data = loadData();
+	const courseId = req.params.id;
+	const course = data.courses.find((c) => c.id === courseId);
+
+	if (!course) {
+		return res.status(404).json({ message: "Course not found" });
+	}
+
+	res.json(course);
+});
+
 // Add a new course
 router.post("/courses", (req, res) => {
 	const data = loadData();
