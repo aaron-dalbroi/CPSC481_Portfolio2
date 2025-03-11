@@ -1,0 +1,37 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"displayName": "John Doe",
+			"email": "john@example.com",
+			"password": "hashedpassword",
+			"yearOfProgram": 2,
+			"programName": "Computer Science",
+			"currentCourses": ["CPSC101", "MATH200"],
+			"pastCourses": [
+				{
+					"course": "CPSC100",
+					"semester": "Fall 2023",
+					"completionStatus": "Completed"
+				}
+			],
+			"starredCourses": ["CPSC300"]
+		}
+	],
+	"courses": [
+		{
+			"id": "CPSC101",
+			"name": "Intro to CS",
+			"description": "Basic programming concepts",
+			"semesterAvailability": ["Fall 2024", "Winter 2025"],
+			"prerequisites": []
+		},
+		{
+			"id": "MATH200",
+			"name": "Calculus II",
+			"description": "Advanced calculus topics",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["MATH100"]
+		}
+	]
+}
