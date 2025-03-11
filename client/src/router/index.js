@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MainPage from "@/views/MainPage.vue";
 import CourseOverview from "@/views/CourseOverview.vue";
+import SelectOptionalCourse from "@/views/SelectOptionalCourse.vue";
 
 const routes = [
 	{
@@ -14,6 +15,9 @@ const routes = [
 		component: CourseOverview,
 		props: true, // Pass route params as props
 	},
+	{ path: "/select-course",
+	  name:"select-course",
+	  component: SelectOptionalCourse }, // Route for the secondary page
 ];
 
 const router = createRouter({
