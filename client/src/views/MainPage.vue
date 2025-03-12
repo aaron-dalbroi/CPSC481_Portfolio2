@@ -157,7 +157,33 @@
 			</v-col>
 			<!-- Right half of page (Everything Else) -->
 			<v-col cols="5" class="scrollable-column">
-				<v-card>
+				
+				<!-- Warning Box -->
+				<v-card class="log-box">
+					<v-card-title>Warning Logs</v-card-title>
+					<v-card-text>
+						<v-textarea
+						v-model="warningLogs"
+						auto-grow
+						readonly
+						variant="outlined"
+						class="warning-text"
+						></v-textarea>
+					</v-card-text>
+				</v-card>
+				
+
+				<!-- Search Bar -->
+				<v-text-field
+					v-model="searchQuery"
+					label="Search for courses"
+					solo
+					clearable
+					class="search-bar"
+				></v-text-field>
+				
+				<!-- Requirements Report -->
+				 <v-card>
 					<v-card-title>
 						Requirements Report
 						<v-sheet class="d-flex align-center">
@@ -176,6 +202,7 @@
 						</v-sheet>
 					</v-card-title>
 				</v-card>
+
 				<v-expansion-panels
 					variant="accordion"
 					multiple="true"
@@ -295,8 +322,12 @@ export default {
 	data() {
 		return {
 			user: {},
+			warningLogs: "", 
 		};
 	},
+
+	methods: {addWarning(message) {this.warningLogs += `\n⚠️ ${message}`;}},
+
 	computed: {
 		groupedPastCourses() {
 			return (
@@ -309,6 +340,7 @@ export default {
 				}, {}) || {}
 			);
 		},
+
 		sortedGroupedPastCourses() {
 			// Sort semesters in descending order (latest at the top)
 			const sortedKeys = Object.keys(this.groupedPastCourses).sort((a, b) => {
@@ -331,7 +363,13 @@ export default {
 		} catch (error) {
 			console.error("Error fetching user:", error);
 		}
+
 	},
+	mounted() {
+    // Call addWarning after the page is mounted
+    this.addWarning("Missing CPSC 331 in Dashboard. Drag and drop it from requirements report.");
+  },
+	
 };
 </script>
 
@@ -403,6 +441,28 @@ export default {
     max-height: calc(100vh - 64px); /* Adjust for App Bar height */
     overflow-y: auto; /* Enables vertical scrolling */
     padding-right: 8px; /* Optional: prevents scrollbar from overlapping content */
+}
+
+.log-box {
+  background-color: #fff3cd; /* Light yellow background */
+  padding: 16px;
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+.warning-text {
+  background-color: #fff3cd !important;
+  color: #856404; /* Darker text for readability */
+  font-weight: bold;
+  border: none; /* Remove default border */
+}
+.search-bar {
+  width: 66%;           /* 2/3 of the width */
+  border-radius: 8px;   /* Rounded corners */
+  margin: 10px auto;    /* Center the component and add margin */
+  padding: 10px;        /* Padding around the text field */
+  margin-left: 0;
+  margin-right: auto;
 }
 
 </style>
