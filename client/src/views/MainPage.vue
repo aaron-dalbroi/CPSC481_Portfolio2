@@ -52,7 +52,7 @@
 							<span>{{ user.currentCourses[0].semester }}</span>
 						</template>
 						<v-card class="elevation-2">
-							<v-card-title class="text-h5"></v-card-title>
+							<v-card-title class="text-h5">Current Semester</v-card-title>
 							<v-card-text>
 								<v-slide-group multiple class="d-flex">
 									<v-slide-item
@@ -76,7 +76,7 @@
 													class="course-icon"
 													:color="
 														course.completionStatus === 'In Progress'
-															? 'blue'
+															? 'warning'
 															: 'gray'
 													"
 												>
