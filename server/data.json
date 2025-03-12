@@ -2,8 +2,8 @@
 	"users": [
 		{
 			"id": 1,
-			"displayName": "Honky Dory",
-			"email": "hdory@example.com",
+			"displayName": "John Doe",
+			"email": "johndoe@example.com",
 			"password": "hashedpassword",
 			"yearOfProgram": 3,
 			"programName": "Computer Science",
@@ -113,7 +113,7 @@
 				{
 					"course": "CS206",
 					"semester": "Fall 2024",
-					"completionStatus": "Inomplete"
+					"completionStatus": "Incomplete"
 				}
 			],
 			"starredCourses": ["CPSC300", "STAT300"]
