@@ -3,6 +3,24 @@
 		class="fill-height d-flex justify-center align-center"
 		style="width: 100vw; height: 100vh; padding: 0"
 	>
+
+	<v-app-bar color="red-darken-4" app>
+			<v-btn icon @click="$router.go(-1)">
+                <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+			<v-img
+				class="mx-2"
+				src="../assets/U_Calgary_Logo.png"
+				max-height="40"
+				max-width="40"
+				contain
+			></v-img>
+
+			<v-toolbar-title class="ml-2">
+				Degree Navigator
+			</v-toolbar-title>
+
+		</v-app-bar>
 		<v-card
 			class="pa-5"
 			style="

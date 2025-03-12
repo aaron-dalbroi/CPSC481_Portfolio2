@@ -1,139 +1,296 @@
 <template>
-	<v-container>
-		<v-card>
-			<v-card-title>Your Dashboard</v-card-title>
-			<v-card-text>
-				<v-list>
-					<v-list-item>
-						<v-list-item-content>
-							<v-list-item-title>{{ user.displayName }}</v-list-item-title>
-							<v-list-item-subtitle>
-								{{ user.programName }} - Year {{ user.yearOfProgram }}
-							</v-list-item-subtitle>
-						</v-list-item-content>
-					</v-list-item>
-				</v-list>
-			</v-card-text>
-		</v-card>
+	<v-container fluid>
+		<v-app-bar color="red-darken-4" app>
+			<v-btn icon @click="$router.go(-1)">
+                <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+			<v-img
+				class="mx-2"
+				src="../assets/U_Calgary_Logo.png"
+				max-height="40"
+				max-width="40"
+				contain
+			></v-img>
 
-		<!-- Timeline Section -->
-		<v-timeline align="start" reverse side="end">
-			<!-- Current Courses (at the top of the timeline) -->
-			<v-timeline-item
-				v-if="user.currentCourses && user.currentCourses.length"
-				:key="'current-courses'"
-				dot-color="teal-lighten-3"
-				size="large"
-			>
-				<template v-slot:icon>
-					<v-avatar color="teal" size="24px"> </v-avatar>
-				</template>
-				<template v-slot:opposite>
-					<span>{{ user.currentCourses[0].semester }}</span>
-				</template>
-				<v-card class="elevation-2">
-					<v-card-title class="text-h5">Current Courses</v-card-title>
+			<v-toolbar-title class="ml-2">
+				Degree Navigator
+			</v-toolbar-title>
+
+		</v-app-bar>
+		<v-row>
+			<v-col cols="7">
+				<v-card>
+					<v-card-title>Your Dashboard</v-card-title>
 					<v-card-text>
-						<v-slide-group multiple class="d-flex">
-							<v-slide-item
-								v-for="course in user.currentCourses"
-								:key="course.course"
-								class="mb-2"
-							>
-								<!-- Make each course a button -->
-								<v-btn
-									:to="{
-										name: 'course-overview',
-										params: { courseId: course.course },
-									}"
-									block
-									class="course-btn"
-								>
-									<!-- Course Title and Icon centered -->
-									<div class="d-flex justify-center align-center">
-										<span class="course-name">{{ course.course }}</span>
-										<v-icon
-											class="course-icon"
-											:color="
-												course.completionStatus === 'In Progress'
-													? 'blue'
-													: 'gray'
-											"
-										>
-											mdi-progress-check
-										</v-icon>
-									</div>
-									<!-- Status on the top-right -->
-									<v-card-subtitle class="status">{{
-										course.completionStatus
-									}}</v-card-subtitle>
-								</v-btn>
-							</v-slide-item>
-						</v-slide-group>
+						<v-list>
+							<v-list-item>
+								<v-list-item-content>
+									<v-list-item-title>{{ user.displayName }}</v-list-item-title>
+									<v-list-item-subtitle>
+										{{ user.programName }} - Year {{ user.yearOfProgram }}
+									</v-list-item-subtitle>
+								</v-list-item-content>
+							</v-list-item>
+						</v-list>
 					</v-card-text>
 				</v-card>
-			</v-timeline-item>
 
-			<!-- Past Courses -->
-			<v-timeline-item
-				v-for="(courses, semester) in sortedGroupedPastCourses"
-				:key="semester"
-				dot-color="teal"
-				size="large"
-			>
-				<template v-slot:icon>
-					<v-avatar color="teal" size="24px"> </v-avatar>
-				</template>
-				<template v-slot:opposite>
-					<span>{{ semester }}</span>
-				</template>
-				<v-card class="elevation-2">
-					<v-card-title class="text-h5">Courses Taken</v-card-title>
-					<v-card-text>
-						<v-slide-group multiple class="d-flex">
-							<v-slide-item
-								v-for="course in courses"
-								:key="course.course"
-								class="mb-2"
-							>
-								<!-- Make each course a button -->
-								<v-btn
-									:to="{
-										name: 'course-overview',
-										params: { courseId: course.course },
-									}"
-									block
-									class="course-btn"
-								>
-									<!-- Course Title and Icon centered -->
-									<div class="d-flex justify-center align-center">
-										<span class="course-name">{{ course.course }}</span>
-										<v-icon
-											class="course-icon"
-											:color="
-												course.completionStatus === 'Completed'
-													? 'green'
-													: 'red'
-											"
+				<!-- Timeline Section -->
+				<v-timeline align="start" reverse side="end">
+					<!-- Current Courses (at the top of the timeline) -->
+					<v-timeline-item
+						v-if="user.currentCourses && user.currentCourses.length"
+						:key="'current-courses'"
+						dot-color="teal-lighten-3"
+						size="large"
+					>
+						<template v-slot:icon>
+							<v-avatar color="teal" size="24px"> </v-avatar>
+						</template>
+						<template v-slot:opposite>
+							<span>{{ user.currentCourses[0].semester }}</span>
+						</template>
+						<v-card class="elevation-2">
+							<v-card-title class="text-h5">Current Courses</v-card-title>
+							<v-card-text>
+								<v-slide-group multiple class="d-flex">
+									<v-slide-item
+										v-for="course in user.currentCourses"
+										:key="course.course"
+										class="mb-2"
+									>
+										<!-- Make each course a button -->
+										<v-btn
+											:to="{
+												name: 'course-overview',
+												params: { courseId: course.course },
+											}"
+											block
+											class="course-btn"
 										>
-											{{
-												course.completionStatus === "Completed"
-													? "mdi-checkbox-marked-circle"
-													: "mdi-cancel"
-											}}
-										</v-icon>
-									</div>
-									<!-- Status on the top-right -->
-									<v-card-subtitle class="status">{{
-										course.completionStatus
-									}}</v-card-subtitle>
-								</v-btn>
-							</v-slide-item>
-						</v-slide-group>
-					</v-card-text>
+											<!-- Course Title and Icon centered -->
+											<div class="d-flex justify-center align-center">
+												<span class="course-name">{{ course.course }}</span>
+												<v-icon
+													class="course-icon"
+													:color="
+														course.completionStatus === 'In Progress'
+															? 'blue'
+															: 'gray'
+													"
+												>
+													mdi-progress-check
+												</v-icon>
+											</div>
+											<!-- Status on the top-right -->
+											<v-card-subtitle class="status">{{
+												course.completionStatus
+											}}</v-card-subtitle>
+										</v-btn>
+									</v-slide-item>
+								</v-slide-group>
+							</v-card-text>
+						</v-card>
+					</v-timeline-item>
+
+					<!-- Past Courses -->
+					<v-timeline-item
+						v-for="(courses, semester) in sortedGroupedPastCourses"
+						:key="semester"
+						dot-color="teal"
+						size="large"
+					>
+						<template v-slot:icon>
+							<v-avatar color="teal" size="24px"> </v-avatar>
+						</template>
+						<template v-slot:opposite>
+							<span>{{ semester }}</span>
+						</template>
+						<v-card class="elevation-2">
+							<v-card-title class="text-h5">Courses Taken</v-card-title>
+							<v-card-text>
+								<v-slide-group multiple class="d-flex">
+									<v-slide-item
+										v-for="course in courses"
+										:key="course.course"
+										class="mb-2"
+									>
+										<!-- Make each course a button -->
+										<v-btn
+											:to="{
+												name: 'course-overview',
+												params: { courseId: course.course },
+											}"
+											block
+											class="course-btn"
+										>
+											<!-- Course Title and Icon centered -->
+											<div class="d-flex justify-center align-center">
+												<span class="course-name">{{ course.course }}</span>
+												<v-icon
+													class="course-icon"
+													:color="
+														course.completionStatus === 'Completed'
+															? 'green'
+															: 'red'
+													"
+												>
+													{{
+														course.completionStatus === "Completed"
+															? "mdi-checkbox-marked-circle"
+															: "mdi-cancel"
+													}}
+												</v-icon>
+											</div>
+											<!-- Status on the top-right -->
+											<v-card-subtitle class="status">{{
+												course.completionStatus
+											}}</v-card-subtitle>
+										</v-btn>
+									</v-slide-item>
+								</v-slide-group>
+							</v-card-text>
+						</v-card>
+					</v-timeline-item>
+				</v-timeline>
+			</v-col>
+			<v-col cols="5">
+				<v-card>
+					<v-card-title>
+						Requirements Report
+						<v-sheet class="d-flex align-center">
+							<v-progress-linear
+								:location="null"
+								bg-color="black"
+								buffer-color="warning"
+								buffer-opacity="0.5"
+								buffer-value="70"
+								color="success"
+								height="15"
+								model-value="50"
+								rounded
+							></v-progress-linear>
+							<div class="ms-4">21 / 36</div>
+						</v-sheet>
+					</v-card-title>
 				</v-card>
-			</v-timeline-item>
-		</v-timeline>
+				<v-expansion-panels
+					variant="accordion"
+					multiple="true"
+				>
+					<v-expansion-panel
+						expand-icon=""
+						readonly="true"
+					>
+						<v-expansion-panel-title>
+							<v-row>
+								<v-col class="d-flex justify-start" cols="6">
+									Requirement
+								</v-col>
+								<v-col class="d-flex justify-center" cols="3">
+									Status
+								</v-col>
+								<v-col class="d-flex justify-end" cols="3">
+									Credits Achieved
+								</v-col>
+								</v-row>
+						</v-expansion-panel-title>
+					</v-expansion-panel>
+					<v-expansion-panel>
+						<v-expansion-panel-title>
+							<v-row>
+								<v-col class="d-flex justify-start align-center" cols="6">
+									Requirement
+								</v-col>
+								<v-col class="d-flex justify-center" cols="3">
+									<v-chip color="success" label>
+										Completed
+									</v-chip>
+								</v-col>
+								<v-col class="d-flex justify-end align-center" cols="3">
+									6 / 6
+								</v-col>
+								</v-row>
+						</v-expansion-panel-title>
+						<v-expansion-panel-text>
+							<v-table>
+								<thead>
+									<tr>
+									<th>Prerequisite(s)</th>
+									<th>Course</th>
+									<th>Grade</th>
+									<th>Credits</th>
+									<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									<td>
+										<v-icon
+											color="green"
+										>
+											mdi-check-circle
+										</v-icon>
+									</td>
+									<td>CS 251</td>
+									<td>B+</td>
+									<td>3</td>
+									<td><v-chip color="warning">In Progress</v-chip></td>
+									</tr>
+									<tr>
+									<td>
+										<v-icon
+											color="green"
+										>
+											mdi-check-circle
+										</v-icon>
+									</td>
+									<td>CS 251</td>
+									<td>B+</td>
+									<td>3</td>
+									<td><v-chip color="warning">In Progress</v-chip></td>
+									</tr>
+								</tbody>
+							</v-table>
+						</v-expansion-panel-text>
+					</v-expansion-panel>
+					<v-expansion-panel>
+						<v-expansion-panel-title>
+							<v-row>
+								<v-col class="d-flex justify-start align-center" cols="6">
+									Requirement
+								</v-col>
+								<v-col class="d-flex justify-center" cols="3">
+									<v-chip color="warning" label>
+										In Progress
+									</v-chip>
+								</v-col>
+								<v-col class="d-flex justify-end align-center" cols="3">
+									9 / 36
+								</v-col>
+								</v-row>
+						</v-expansion-panel-title>
+					</v-expansion-panel>
+					<v-expansion-panel>
+						<v-expansion-panel-title>
+							<v-row>
+								<v-col class="d-flex justify-start align-center" cols="6">
+									Requirement
+								</v-col>
+								<v-col class="d-flex justify-center" cols="3">
+									<v-chip color="error" label>
+										Incomplete
+									</v-chip>
+								</v-col>
+								<v-col class="d-flex justify-end align-center" cols="3">
+									0 / 9
+								</v-col>
+								</v-row>
+						</v-expansion-panel-title>
+					</v-expansion-panel>
+				</v-expansion-panels>
+			</v-col>
+		</v-row>
 	</v-container>
 </template>
 
@@ -248,4 +405,6 @@ export default {
 .float-right {
 	float: right;
 }
+
+
 </style>
