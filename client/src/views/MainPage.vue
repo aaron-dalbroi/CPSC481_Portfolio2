@@ -18,7 +18,8 @@
 
 		</v-app-bar>
 		<v-row>
-			<v-col cols="7">
+			<!-- Left half of page (Timeline View) -->
+			<v-col cols="7" class="scrollable-column">
 				<v-card>
 					<v-card-title>Your Dashboard</v-card-title>
 					<v-card-text>
@@ -51,7 +52,7 @@
 							<span>{{ user.currentCourses[0].semester }}</span>
 						</template>
 						<v-card class="elevation-2">
-							<v-card-title class="text-h5">Current Courses</v-card-title>
+							<v-card-title class="text-h5"></v-card-title>
 							<v-card-text>
 								<v-slide-group multiple class="d-flex">
 									<v-slide-item
@@ -107,7 +108,7 @@
 							<span>{{ semester }}</span>
 						</template>
 						<v-card class="elevation-2">
-							<v-card-title class="text-h5">Courses Taken</v-card-title>
+							<v-card-title class="text-h5"></v-card-title>
 							<v-card-text>
 								<v-slide-group multiple class="d-flex">
 									<v-slide-item
@@ -154,23 +155,24 @@
 					</v-timeline-item>
 				</v-timeline>
 			</v-col>
-			<v-col cols="5">
+			<!-- Right half of page (Everything Else) -->
+			<v-col cols="5" class="scrollable-column">
 				<v-card>
 					<v-card-title>
 						Requirements Report
 						<v-sheet class="d-flex align-center">
 							<v-progress-linear
 								:location="null"
-								bg-color="black"
+								bg-color="red-darken-3"
 								buffer-color="warning"
 								buffer-opacity="0.5"
-								buffer-value="70"
+								buffer-value="85"
 								color="success"
 								height="15"
-								model-value="50"
+								model-value="72"
 								rounded
 							></v-progress-linear>
-							<div class="ms-4">21 / 36</div>
+							<div class="ms-4">48 / 66</div>
 						</v-sheet>
 					</v-card-title>
 				</v-card>
@@ -184,14 +186,12 @@
 					>
 						<v-expansion-panel-title>
 							<v-row>
-								<v-col class="d-flex justify-start" cols="6">
-									Requirement
-								</v-col>
-								<v-col class="d-flex justify-center" cols="3">
+
+								<v-col>
 									Status
 								</v-col>
-								<v-col class="d-flex justify-end" cols="3">
-									Credits Achieved
+								<v-col>
+									Total Credits
 								</v-col>
 								</v-row>
 						</v-expansion-panel-title>
@@ -199,16 +199,14 @@
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
-								<v-col class="d-flex justify-start align-center" cols="6">
-									Requirement
-								</v-col>
+
 								<v-col class="d-flex justify-center" cols="3">
 									<v-chip color="success" label>
 										Completed
 									</v-chip>
 								</v-col>
 								<v-col class="d-flex justify-end align-center" cols="3">
-									6 / 6
+									48 / 66
 								</v-col>
 								</v-row>
 						</v-expansion-panel-title>
@@ -235,7 +233,7 @@
 									<td>CS 251</td>
 									<td>B+</td>
 									<td>3</td>
-									<td><v-chip color="warning">In Progress</v-chip></td>
+									<td><v-chip color="green">Completed</v-chip></td>
 									</tr>
 									<tr>
 									<td>
@@ -245,10 +243,10 @@
 											mdi-check-circle
 										</v-icon>
 									</td>
-									<td>CS 251</td>
+									<td>CS 255</td>
 									<td>B+</td>
 									<td>3</td>
-									<td><v-chip color="warning">In Progress</v-chip></td>
+									<td><v-chip color="green">Completed</v-chip></td>
 									</tr>
 								</tbody>
 							</v-table>
@@ -266,7 +264,7 @@
 									</v-chip>
 								</v-col>
 								<v-col class="d-flex justify-end align-center" cols="3">
-									9 / 36
+									9 / 66
 								</v-col>
 								</v-row>
 						</v-expansion-panel-title>
@@ -283,7 +281,7 @@
 									</v-chip>
 								</v-col>
 								<v-col class="d-flex justify-end align-center" cols="3">
-									0 / 9
+									9 / 66
 								</v-col>
 								</v-row>
 						</v-expansion-panel-title>
@@ -406,5 +404,10 @@ export default {
 	float: right;
 }
 
+.scrollable-column {
+    max-height: calc(100vh - 64px); /* Adjust for App Bar height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding-right: 8px; /* Optional: prevents scrollbar from overlapping content */
+}
 
 </style>
