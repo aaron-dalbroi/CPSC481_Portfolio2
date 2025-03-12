@@ -159,7 +159,7 @@
 			<v-col cols="5" class="scrollable-column">
 				
 				<!-- Warning Box -->
-				<v-card class="log-box">
+				<v-card >
 					<v-card-title>Warning Logs</v-card-title>
 					<v-card-text>
 						<v-textarea
@@ -187,6 +187,8 @@
 					<v-card-title>
 						Requirements Report
 						<v-sheet class="d-flex align-center">
+							
+							<!-- Progress Bar -->
 							<v-progress-linear
 								:location="null"
 								bg-color="red-darken-3"
@@ -203,6 +205,7 @@
 					</v-card-title>
 				</v-card>
 
+				<!-- Dropdown Table -->
 				<v-expansion-panels
 					variant="accordion"
 					multiple="true"
@@ -326,7 +329,7 @@ export default {
 		};
 	},
 
-	methods: {addWarning(message) {this.warningLogs += `\n⚠️ ${message}`;}},
+	methods: {addWarning(message) {this.warningLogs += `\n⚠️ ${message}⚠️`;}},
 
 	computed: {
 		groupedPastCourses() {
@@ -367,7 +370,7 @@ export default {
 	},
 	mounted() {
     // Call addWarning after the page is mounted
-    this.addWarning("Missing CPSC 331 in Dashboard. Drag and drop it from requirements report.");
+    this.addWarning("Missing CPSC 331 in Dashboard. Drag and drop it from requirements report");
   },
 	
 };
@@ -445,17 +448,23 @@ export default {
 
 .log-box {
   background-color: #fff3cd; /* Light yellow background */
-  padding: 16px;
-  max-height: 300px; /* Adjust as needed */
+
+
   overflow-y: auto;
 }
 
 .warning-text {
-  background-color: #fff3cd !important;
+
   color: #856404; /* Darker text for readability */
   font-weight: bold;
-  border: none; /* Remove default border */
+
 }
+
+.warning-text .v-input__control {
+  background-color: #fff3cd !important; /* Yellow background */
+}
+
+
 .search-bar {
   width: 66%;           /* 2/3 of the width */
   border-radius: 8px;   /* Rounded corners */
