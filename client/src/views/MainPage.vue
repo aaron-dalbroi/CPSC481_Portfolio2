@@ -187,10 +187,10 @@
 						<v-expansion-panel-title>
 							<v-row>
 
-								<v-col>
+								<v-col class="d-flex justify-left align-center">
 									Status
 								</v-col>
-								<v-col>
+								<v-col class="d-flex justify-end align-center">
 									Total Credits
 								</v-col>
 								</v-row>
@@ -200,12 +200,12 @@
 						<v-expansion-panel-title>
 							<v-row>
 
-								<v-col class="d-flex justify-center" cols="3">
+								<v-col class="d-flex justify-left">
 									<v-chip color="success" label>
 										Completed
 									</v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center" cols="3">
+								<v-col class="d-flex justify-end align-center">
 									48 / 66
 								</v-col>
 								</v-row>
@@ -255,15 +255,13 @@
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
-								<v-col class="d-flex justify-start align-center" cols="6">
-									Requirement
-								</v-col>
-								<v-col class="d-flex justify-center" cols="3">
+
+								<v-col class="d-flex justify-left">
 									<v-chip color="warning" label>
 										In Progress
 									</v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center" cols="3">
+								<v-col class="d-flex justify-end align-center">
 									9 / 66
 								</v-col>
 								</v-row>
@@ -272,15 +270,12 @@
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
-								<v-col class="d-flex justify-start align-center" cols="6">
-									Requirement
-								</v-col>
-								<v-col class="d-flex justify-center" cols="3">
-									<v-chip color="error" label>
+								<v-col class="d-flex justify-left">
+									<v-chip  color="error" label>
 										Incomplete
 									</v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center" cols="3">
+								<v-col class="d-flex justify-end align-center">
 									9 / 66
 								</v-col>
 								</v-row>
