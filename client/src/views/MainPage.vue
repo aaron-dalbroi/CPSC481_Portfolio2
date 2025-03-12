@@ -191,7 +191,7 @@
 							<!-- Progress Bar -->
 							<v-progress-linear
 								:location="null"
-								bg-color="red-darken-3"
+								bg-color="error"
 								buffer-color="warning"
 								buffer-opacity="0.5"
 								buffer-value="85"

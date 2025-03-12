@@ -17,7 +17,7 @@
 			></v-img>
 
 			<v-toolbar-title class="ml-2">
-				Degree Navigator
+				Course Prerequisites
 			</v-toolbar-title>
 
 		</v-app-bar>

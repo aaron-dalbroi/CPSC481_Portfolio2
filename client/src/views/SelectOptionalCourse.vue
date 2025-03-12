@@ -1,11 +1,25 @@
 <template>
     <v-container>
+      <v-app-bar color="red-darken-4" app>
+			<v-btn icon @click="$router.go(-1)">
+                <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+			<v-img
+				class="mx-2"
+				src="../assets/U_Calgary_Logo.png"
+				max-height="40"
+				max-width="40"
+				contain
+			></v-img>
+
+			<v-toolbar-title class="ml-2">
+				Select Optional Course
+			</v-toolbar-title>
+
+		</v-app-bar>
       <!-- Header -->
       <v-row align="center" class="mb-4">
-        <v-btn icon @click="goBack">
-          <v-icon>mdi-arrow-left</v-icon>
-        </v-btn>
-        <v-spacer></v-spacer>
+
       </v-row>
   
       <VCardTitle> Select From Valid Courses </VCardTitle>
