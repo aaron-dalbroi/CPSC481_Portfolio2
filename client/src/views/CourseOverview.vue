@@ -3,11 +3,10 @@
 		class="fill-height d-flex justify-center align-center"
 		style="width: 100vw; height: 100vh; padding: 0"
 	>
-
-	<v-app-bar color="red-darken-4" app>
+		<v-app-bar color="red-darken-4" app>
 			<v-btn icon @click="$router.go(-1)">
-                <v-icon>mdi-arrow-left</v-icon>
-            </v-btn>
+				<v-icon>mdi-arrow-left</v-icon>
+			</v-btn>
 			<v-img
 				class="mx-2"
 				src="../assets/U_Calgary_Logo.png"
@@ -16,55 +15,79 @@
 				contain
 			></v-img>
 
-			<v-toolbar-title class="ml-2">
-				Course Prerequisites
-			</v-toolbar-title>
-
+			<v-toolbar-title class="ml-2"> Course Prerequisites </v-toolbar-title>
 		</v-app-bar>
-		<v-card
-			class="pa-5"
-			style="
-				width: 100%; /* Allow the card to expand fully */
-				height: 95vh; /* Keep the height constraint */
-				max-width: none; /* Remove the max-width restriction */
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			"
-		>
-			<v-card-title class="text-h5 text-center">{{ course.name }}</v-card-title>
-			<v-card-subtitle class="text-center">{{
-				course.description
-			}}</v-card-subtitle>
-			<v-card-text
-				class="d-flex justify-center"
-				style="flex-grow: 1; width: 100%"
-			>
-				<vue-tree
-					class="vue-tree-container"
-					:dataset="treeData"
-					:config="treeConfig"
-					linkStyle="straight"
+		<v-row>
+			<!-- Left half of page -->
+			<v-col cols="7" class="scrollable-column">
+				<v-card
+					class="pa-5"
+					style="
+						width: 100%; /* Allow the card to expand fully */
+						height: 95vh; /* Keep the height constraint */
+						max-width: none; /* Remove the max-width restriction */
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					"
 				>
-					<template v-slot:node="{ node, collapsed }">
-						<div
-							class="rich-media-node"
-							:style="{ border: collapsed ? '2px solid grey' : '' }"
+					<v-card-title class="text-h5 text-center">{{
+						course.name
+					}}</v-card-title>
+					<v-card-subtitle class="text-center">{{
+						course.description
+					}}</v-card-subtitle>
+					<v-card-text
+						class="d-flex justify-center"
+						style="flex-grow: 1; width: 100%"
+					>
+						<vue-tree
+							class="vue-tree-container"
+							:dataset="treeData"
+							:config="treeConfig"
+							linkStyle="straight"
 						>
-							<!-- Star icon in the top right corner -->
-							<!--<v-icon class="star-icon">mdi-star</v-icon>-->
+							<template v-slot:node="{ node, collapsed }">
+								<div
+									class="rich-media-node"
+									:style="{ border: collapsed ? '2px solid grey' : '' }"
+								>
+									<!-- Star icon in the top right corner -->
+									<!--<v-icon class="star-icon">mdi-star</v-icon>-->
 
-							<span class="node-id">{{ node.id }}</span>
-							<span class="node-name">{{ node.name }}</span>
-							<v-icon
-								class="status-icon"
-								:icon="getCompletionIcon(node.id)"
-							></v-icon>
-						</div>
-					</template>
-				</vue-tree>
-			</v-card-text>
-		</v-card>
+									<span class="node-id">{{ node.id }}</span>
+									<span class="node-name">{{ node.name }}</span>
+									<v-icon
+										class="status-icon"
+										:icon="getCompletionIcon(node.id)"
+									></v-icon>
+								</div>
+							</template>
+						</vue-tree>
+					</v-card-text>
+				</v-card>
+			</v-col>
+			<!-- Right half of page -->
+			<v-col cols="5" class="scrollable-column">
+				<!-- Warning Box -->
+				<v-card>
+					<v-card-title>Syllabus</v-card-title>
+					<v-card-text>
+						<v-textarea></v-textarea>
+					</v-card-text>
+				</v-card>
+
+				<!-- Ratings -->
+				<v-card>
+					<v-card-title>
+						Course Ratings
+						<v-card-text>
+							<v-textarea></v-textarea>
+						</v-card-text>
+					</v-card-title>
+				</v-card>
+			</v-col>
+		</v-row>
 	</v-container>
 </template>
 
