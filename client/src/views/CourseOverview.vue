@@ -72,10 +72,10 @@
 					<v-card-title>Course Syllabus</v-card-title>
 					<v-card-text class="scrollable-syllabus-content">
 						<!-- Course Information -->
-						<v-card-title class="text-h6">Course Information</v-card-title>
+						<v-card-title class="text-h6">COURSE INFORMATION</v-card-title>
 
 						<!-- Sections -->
-						<v-card-title class="text-subtitle-1">Sections</v-card-title>
+						<v-card-title class="text-h6">Sections</v-card-title>
 						<v-list>
 							<v-list-item
 								v-for="(section, index) in course.syllabus.courseInformation
@@ -92,9 +92,7 @@
 						</v-list>
 
 						<!-- Course Materials -->
-						<v-card-title class="text-subtitle-1"
-							>Course Materials</v-card-title
-						>
+						<v-card-title class="text-h6">Course Materials</v-card-title>
 						<v-list>
 							<v-list-item>
 								<v-list-item-title class="text-body-1"
@@ -135,7 +133,7 @@
 						</v-list>
 
 						<!-- Course Learning Outcomes -->
-						<v-card-title class="text-subtitle-1"
+						<v-card-title class="text-h6"
 							>Course Learning Outcomes:</v-card-title
 						>
 						<v-list>
@@ -151,14 +149,10 @@
 						</v-list>
 
 						<!-- Assessment & Evaluation Information -->
-						<v-card-title class="text-h6"
-							>Assessment & Evaluation Information</v-card-title
-						>
+						<v-card-title class="text-h6">ASSESSMENT & EVALUATION</v-card-title>
 
 						<!-- Assessment Components -->
-						<v-card-title class="text-subtitle-1"
-							>Assessment Components</v-card-title
-						>
+						<v-card-title class="text-h6">Assessment Components</v-card-title>
 						<v-list>
 							<v-list-item
 								v-for="(component, index) in course.syllabus
@@ -181,7 +175,7 @@
 						</v-list>
 
 						<!-- Missed Components Policy -->
-						<v-card-title class="text-subtitle-1"
+						<v-card-title class="text-h6"
 							>Missed Components Policy</v-card-title
 						>
 						<v-card-text class="text-body-1">{{
@@ -190,9 +184,7 @@
 						}}</v-card-text>
 
 						<!-- Letter Grade Conversion -->
-						<v-card-title class="text-subtitle-1"
-							>Letter Grade Conversion</v-card-title
-						>
+						<v-card-title class="text-h6">Letter Grade Conversion</v-card-title>
 						<v-list>
 							<v-list-item
 								v-for="(grade, letter) in course.syllabus
