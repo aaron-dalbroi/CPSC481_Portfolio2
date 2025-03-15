@@ -1213,7 +1213,7 @@
 			"name": "Network Systems",
 			"description": "Study of networking and network protocols",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"],
+			"prerequisites": ["CPSC101", "STAT200"],
 			"syllabus": {
 				"courseInformation": {
 					"sections": [
@@ -1350,6 +1350,148 @@
 			"description": "Introduction to cloud computing technologies and services",
 			"semesterAvailability": ["Fall 2024"],
 			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
+		},
+		{
+			"id": "CPSC201",
+			"name": "Cloud Computing",
+			"description": "Introduction to cloud computing technologies and services",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["MATH200", "CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
+		},
+		{
+			"id": "MATH250",
+			"name": "Cloud Computing",
+			"description": "Introduction to cloud computing technologies and services",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["STAT200"],
 			"syllabus": {
 				"courseInformation": {
 					"sections": [
