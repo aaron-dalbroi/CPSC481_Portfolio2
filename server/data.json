@@ -125,133 +125,1437 @@
 			"name": "Intro to CS",
 			"description": "Basic programming concepts",
 			"semesterAvailability": ["Fall 2022"],
-			"prerequisites": []
+			"prerequisites": [],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "MATH100",
 			"name": "Calculus I",
 			"description": "Introduction to calculus",
 			"semesterAvailability": ["Fall 2022"],
-			"prerequisites": []
+			"prerequisites": [],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CPSC101",
 			"name": "Intro to Programming",
 			"description": "Foundations of programming in Python",
 			"semesterAvailability": ["Winter 2023"],
-			"prerequisites": ["CPSC100"]
+			"prerequisites": ["CPSC100"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "MATH200",
 			"name": "Calculus II",
 			"description": "Advanced calculus topics",
 			"semesterAvailability": ["Winter 2023"],
-			"prerequisites": ["MATH100"]
+			"prerequisites": ["MATH100"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CPSC210",
 			"name": "Data Structures",
 			"description": "Introduction to data structures and algorithms",
 			"semesterAvailability": ["Fall 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "STAT300",
 			"name": "Advanced Statistics",
 			"description": "Fundamentals of probability and statistics",
 			"semesterAvailability": ["Fall 2023"],
-			"prerequisites": ["STAT200", "CS103"]
+			"prerequisites": ["STAT200", "CS103"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "STAT200",
 			"name": "Intro to Statistics",
 			"description": "Fundamentals of probability and statistics",
 			"semesterAvailability": ["Fall 2023"],
-			"prerequisites": ["MATH100"]
+			"prerequisites": ["MATH100"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS101",
 			"name": "Intro to CS - Advanced",
 			"description": "Advanced introduction to CS concepts",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC100"]
+			"prerequisites": ["CPSC100"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS102",
 			"name": "Intermediate Programming",
 			"description": "Intermediate-level programming concepts and practices",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS103",
 			"name": "Algorithms",
 			"description": "Introduction to basic algorithms and their applications",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS104",
 			"name": "Computer Architecture",
 			"description": "Study of computer hardware and organization",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS105",
 			"name": "Operating Systems",
 			"description": "Introduction to operating systems and their management",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS106",
 			"name": "Databases",
 			"description": "Introduction to database management systems",
 			"semesterAvailability": ["Spring 2023"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS201",
 			"name": "Software Development",
 			"description": "Introduction to software engineering principles",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS202",
 			"name": "Advanced Software Engineering",
 			"description": "Advanced principles of software development and architecture",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CS201"]
+			"prerequisites": ["CS201"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS203",
 			"name": "AI and Machine Learning",
 			"description": "Introduction to machine learning and AI concepts",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS204",
 			"name": "Network Systems",
 			"description": "Study of networking and network protocols",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101", "STAT200"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		},
 		{
 			"id": "CS205",
 			"name": "Cybersecurity",
 			"description": "Introduction to cybersecurity concepts and practices",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed 9:00 - 10:30 AM",
+							"professor": "Dr. Taylor"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Calculus: Early Transcendentals, 8th Edition"
+						],
+						"recommendedTextbooks": ["Calculus Made Easy"],
+						"technologies": ["Wolfram Alpha", "Desmos"]
+					},
+					"courseLearningOutcomes": [
+						"Understand limits and continuity",
+						"Differentiate functions and apply derivatives",
+						"Evaluate definite and indefinite integrals"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
 		},
 		{
 			"id": "CS206",
 			"name": "Cloud Computing",
 			"description": "Introduction to cloud computing technologies and services",
 			"semesterAvailability": ["Fall 2024"],
-			"prerequisites": ["CPSC101"]
+			"prerequisites": ["CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
+		},
+		{
+			"id": "CPSC201",
+			"name": "Cloud Computing",
+			"description": "Introduction to cloud computing technologies and services",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["MATH200", "CPSC101"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
+		},
+		{
+			"id": "MATH250",
+			"name": "Cloud Computing",
+			"description": "Introduction to cloud computing technologies and services",
+			"semesterAvailability": ["Fall 2024"],
+			"prerequisites": ["STAT200"],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						},
+						{
+							"section": "B2",
+							"time": "Tue/Thu 2:00 - 3:30 PM",
+							"professor": "Dr. Jones"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
 		}
 	]
 }
