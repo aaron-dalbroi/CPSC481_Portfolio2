@@ -105,10 +105,15 @@
 						<v-avatar :color="getSemesterIconColor(numSemestersToRender - semester - 1)"> <!-- Shrink circle on collapse -->
 						</v-avatar>
         			</template>
+						
+						<!-- The semester name on the left hand side -->
 						<template v-slot:opposite>
-							<span>TimelineStateIdx:{{ numSemestersToRender - semester - 1 }}</span>
+							<v-btn class="semester-btn" @click="toggleCollapse(numSemestersToRender - semester - 1)">
+								{{ getSemesterName(numSemestersToRender - semester - 1 ) }}
+							</v-btn>
 						</template>
-						<v-card class="drop-zone" 
+						
+						<v-card class="drop-zone" v-if="!collapsed[numSemestersToRender - semester - 1]"  
 						@drop="onDrop($event, numSemestersToRender - semester - 1)" 
 						@dragenter.prevent @dragover.prevent>
 
@@ -492,7 +497,10 @@ export default {
 			if (semesterName.includes("Summer")) return "yellow";
 			return "black";
 			};
-
+			
+			const toggleCollapse = (semesterIndex) => {
+				collapsed.value[semesterIndex] = !collapsed.value[semesterIndex];
+    		};
 		
 
 		return {
@@ -504,6 +512,8 @@ export default {
 			onDrop,
 			getSemesterIconColor,
 			getSemesterName,
+			collapsed,
+			toggleCollapse,
 
 		};
 
