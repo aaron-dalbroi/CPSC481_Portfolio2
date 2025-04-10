@@ -101,9 +101,10 @@
 						dot-color="teal"
 						size="large"
 					>
-						<template v-slot:icon>
-							<v-avatar color="teal" size="24px"> </v-avatar>
-						</template>
+					<template v-slot:icon>
+						<v-avatar :color="getSemesterIconColor(numSemestersToRender - semester - 1)"> <!-- Shrink circle on collapse -->
+						</v-avatar>
+        			</template>
 						<template v-slot:opposite>
 							<span>TimelineStateIdx:{{ numSemestersToRender - semester - 1 }}</span>
 						</template>
@@ -338,13 +339,29 @@ export default {
 	},
 
 	setup() {
+		
+		// The semesters are hard-coded, heres the names for each array index in timelineState
+		const semesterNames = [
+			"Fall 2024", "Winter 2025", "Spring 2025", "Summer 2025", 
+			"Fall 2025", "Winter 2026", "Spring 2026", "Summer 2026", 
+			"Fall 2026", "Winter 2027", "Spring 2027", "Summer 2027", 
+			"Fall 2027", "Winter 2028", "Spring 2028", "Summer 2028", 
+			"Fall 2028", "Winter 2029", "Spring 2029", "Summer 2029", 
+			"Fall 2029", "Winter 2030", "Spring 2030", "Summer 2030", 
+			"Fall 2030", "Winter 2031", "Spring 2031", "Summer 2031", 
+			"Fall 2031", "Winter 2032", "Spring 2032", "Summer 2032",
+			];
+		
+		
 		// Create a ref to hold the timelineState array
   		const timelineState = ref(Array([],[],[],[],[],[],[],[],[],[],
                                     [],[],[],[],[],[],[],[],[],[],
                                     [],[],[],[],[],[],[],[],[],[],
                                     [],[])); // Hard-coded for 32 semesters (8yrs)		
 		const user = ref({});
-		
+
+		// Track whether a semester is collapsed or not
+		const collapsed = ref(Array(32).fill(false));
 
 		let numSemestersToRender = ref(parseInt(localStorage.getItem('numSemestersToRender')) || 6);
 
@@ -438,30 +455,45 @@ export default {
 
     const onDrop = (event, semesterIndex) => {
 
-		const course_code = event.dataTransfer.getData('course_code');
-    console.log('Course Being Dropped:', course_code, 'into semester', semesterIndex);
+			const course_code = event.dataTransfer.getData('course_code');
+			console.log('Course Being Dropped:', course_code, 'into semester', semesterIndex);
 
-    if (!course_code) return;
+			if (!course_code) return;
 
-    let movedCourse = null;
+			let movedCourse = null;
 
-    // Search for the course and remove it from its original semester
-    for (let i = 0; i < timelineState.value.length; i++) {
-        const semester = timelineState.value[i];
-        const courseIndex = semester.findIndex(course => course.course === course_code);
-        if (courseIndex !== -1) {
-            movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
-            break; // Stop searching once found
-        }
-    }
-	console.log(movedCourse);
-    if (movedCourse) {
-        // Add the extracted course object to the new semester
-        timelineState.value[semesterIndex].push(movedCourse);
-    }
+			// Search for the course and remove it from its original semester
+			for (let i = 0; i < timelineState.value.length; i++) {
+				const semester = timelineState.value[i];
+				const courseIndex = semester.findIndex(course => course.course === course_code);
+				if (courseIndex !== -1) {
+					movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
+					break; // Stop searching once found
+				}
+			}
+			console.log(movedCourse);
+			if (movedCourse) {
+				// Add the extracted course object to the new semester
+				timelineState.value[semesterIndex].push(movedCourse);
+			}
 
-    console.log('Updated timelineState:', timelineState.value);
-	}
+		console.log('Updated timelineState:', timelineState.value);
+		}
+		
+        // Helper functions
+        const getSemesterName = semesterIndex => semesterNames[semesterIndex];
+		const getSemesterIconColor = (semesterIndex) => {
+			
+			console.log(semesterIndex);
+			const semesterName = getSemesterName(semesterIndex);
+			if (semesterName.includes("Fall")) return "orange";
+			if (semesterName.includes("Winter")) return "blue";
+			if (semesterName.includes("Spring")) return "green";
+			if (semesterName.includes("Summer")) return "yellow";
+			return "black";
+			};
+
+		
 
 		return {
 			timelineState,
@@ -470,6 +502,8 @@ export default {
 			numSemestersToRender,
 			startDrag,
 			onDrop,
+			getSemesterIconColor,
+			getSemesterName,
 
 		};
 
