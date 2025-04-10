@@ -10,110 +10,70 @@
 			"currentCourses": [
 				{
 					"course": "CPSC201",
-					"semester": "Winter 2025",
+					"semester": "Fall 2026",
 					"completionStatus": "In Progress"
 				},
 				{
 					"course": "MATH250",
-					"semester": "Winter 2025",
+					"semester": "Fall 2026",
 					"completionStatus": "In Progress"
 				},
 				{
 					"course": "STAT300",
-					"semester": "Winter 2025",
+					"semester": "Fall 2026",
 					"completionStatus": "In Progress"
 				}
 			],
 			"pastCourses": [
 				{
 					"course": "CPSC100",
-					"semester": "Fall 2022",
+					"semester": "Fall 2024",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "MATH100",
-					"semester": "Fall 2022",
+					"semester": "Fall 2024",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CPSC101",
-					"semester": "Winter 2023",
+					"semester": "Fall 2024",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "MATH200",
-					"semester": "Winter 2023",
+					"semester": "Fall 2024",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CPSC210",
-					"semester": "Fall 2023",
-					"completionStatus": "Incomplete"
+					"semester": "Fall 2024",
+					"completionStatus": "Completed"
 				},
 				{
 					"course": "STAT200",
-					"semester": "Fall 2023",
+					"semester": "Winter 2025",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CS101",
-					"semester": "Spring 2023",
+					"semester": "Winter 2025",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CS102",
-					"semester": "Spring 2023",
+					"semester": "Winter 2025",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CS103",
-					"semester": "Spring 2023",
+					"semester": "Winter 2025",
 					"completionStatus": "Completed"
 				},
 				{
 					"course": "CS104",
-					"semester": "Spring 2023",
+					"semester": "Winter 2025",
 					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS105",
-					"semester": "Spring 2023",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS106",
-					"semester": "Spring 2023",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS201",
-					"semester": "Fall 2024",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS202",
-					"semester": "Fall 2024",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS203",
-					"semester": "Fall 2024",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS204",
-					"semester": "Fall 2024",
-					"completionStatus": "Completed"
-				},
-				{
-					"course": "CS205",
-					"semester": "Fall 2024",
-					"completionStatus": "Incomplete"
-				},
-				{
-					"course": "CS206",
-					"semester": "Fall 2024",
-					"completionStatus": "Incomplete"
 				}
 			],
 			"starredCourses": ["CPSC300", "STAT300"]

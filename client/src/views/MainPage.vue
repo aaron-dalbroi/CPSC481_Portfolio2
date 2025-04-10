@@ -96,7 +96,7 @@
 
 					<!-- Past Courses -->
 					<v-timeline-item
-						v-for="(courses, semester) in sortedGroupedPastCourses"
+						v-for="(courses, semester) in timelineState.slice(0, numSemestersToRender).reverse()"
 						:key="semester"
 						dot-color="teal"
 						size="large"
@@ -105,16 +105,19 @@
 							<v-avatar color="teal" size="24px"> </v-avatar>
 						</template>
 						<template v-slot:opposite>
-							<span>{{ semester }}</span>
+							<span>TimelineStateIdx:{{ numSemestersToRender - semester - 1 }}</span>
 						</template>
-						<v-card class="elevation-2">
+						<v-card class="drop-zone" 
+						@drop="onDrop($event, numSemestersToRender - semester - 1)" 
+						@dragenter.prevent @dragover.prevent>
+
 							<v-card-title class="text-h5"></v-card-title>
 							<v-card-text>
 								<v-slide-group multiple class="d-flex">
 									<v-slide-item
 										v-for="course in courses"
 										:key="course.course"
-										class="mb-2"
+										@dragstart="startDrag($event, course.course)"
 									>
 										<!-- Make each course a button -->
 										<v-btn
@@ -132,14 +135,18 @@
 													class="course-icon"
 													:color="
 														course.completionStatus === 'Completed'
-															? 'green'
-															: 'red'
+														? 'green'
+														: course.completionStatus === 'In Progress'
+														? 'yellow'
+														: 'red'
 													"
 												>
 													{{
-														course.completionStatus === "Completed"
-															? "mdi-checkbox-marked-circle"
-															: "mdi-cancel"
+														course.completionStatus === 'Completed'
+														? "mdi-checkbox-marked-circle"
+														: course.completionStatus === 'In Progress'
+														? "mdi-border-color"
+														: "mdi-cancel"
 													}}
 												</v-icon>
 											</div>
@@ -319,17 +326,167 @@
 
 <script>
 import axios from "axios";
-
+import {ref, onMounted,computed} from "vue";
 export default {
 	name: "MainPage",
 	data() {
 		return {
 			user: {},
-			warningLogs: "", 
+			warningLogs: "",
+
 		};
 	},
 
-	methods: {addWarning(message) {this.warningLogs += `\n⚠️ ${message}⚠️`;}},
+	setup() {
+		// Create a ref to hold the timelineState array
+  		const timelineState = ref(Array([],[],[],[],[],[],[],[],[],[],
+                                    [],[],[],[],[],[],[],[],[],[],
+                                    [],[],[],[],[],[],[],[],[],[],
+                                    [],[])); // Hard-coded for 32 semesters (8yrs)		
+		const user = ref({});
+		
+
+		let numSemestersToRender = ref(parseInt(localStorage.getItem('numSemestersToRender')) || 6);
+
+		
+		// Method to initialize timelineState with 32 sub-arrays
+		const initializeTimelineState = () => {
+			
+			timelineState.value = Array.from({ length: 32 }, () => []);
+
+			// These values are the ones that should always be in the timeline, and shouldn't be changed.
+			// Fall 2o24
+			timelineState.value[0].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[0].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[0].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[0].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[0].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			
+			// Winter 2025
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "Completed"});
+
+			// Fall 2025
+			timelineState.value[4].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "In Progress"});
+			timelineState.value[4].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "In Progress"});
+			timelineState.value[4].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "In Progress"});
+			timelineState.value[1].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "In Progress"});
+			timelineState.value[4].push({	"course": "CPSC100",
+											"semester": "Fall 2024",
+											"completionStatus": "In Progress"});
+		};										
+
+		    // Method to fetch user data
+			const fetchUserData = async () => {
+        try {
+			const response = await axios.get('http://localhost:3000/api/users');
+			user.value = response.data.find((u) => u.id === 1) || {};
+		} catch (error) {
+			console.error('Error fetching user:', error);
+			}
+		};
+
+    // Fetch user data when the component is mounted
+    onMounted(() => {
+      fetchUserData();
+    });
+		// Call the method to initialize the state
+		initializeTimelineState();
+	
+
+		console.log(timelineState.value);
+		
+	const startDrag = (event, item) => {
+        console.log('start drag', item);
+        event.dataTransfer.dropEffect = 'move';
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('course_code', item);
+      };
+
+
+
+    const onDrop = (event, semesterIndex) => {
+
+		const course_code = event.dataTransfer.getData('course_code');
+    console.log('Course Being Dropped:', course_code, 'into semester', semesterIndex);
+
+    if (!course_code) return;
+
+    let movedCourse = null;
+
+    // Search for the course and remove it from its original semester
+    for (let i = 0; i < timelineState.value.length; i++) {
+        const semester = timelineState.value[i];
+        const courseIndex = semester.findIndex(course => course.course === course_code);
+        if (courseIndex !== -1) {
+            movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
+            break; // Stop searching once found
+        }
+    }
+	console.log(movedCourse);
+    if (movedCourse) {
+        // Add the extracted course object to the new semester
+        timelineState.value[semesterIndex].push(movedCourse);
+    }
+
+    console.log('Updated timelineState:', timelineState.value);
+	}
+
+		return {
+			timelineState,
+			initializeTimelineState,
+			user,
+			numSemestersToRender,
+			startDrag,
+			onDrop,
+
+		};
+
+	},
+
+	methods: {
+		
+		addWarning(message) {
+		this.warningLogs += `\n⚠️ ${message}⚠️`;
+		},
+
+		// Function to update the timeline state with sorted courses
+		updateTimelineState() {
+			// console.log(this.user.pastCourses);
+			// console.log(this.groupedPastCourses);
+		}
+	},
 
 	computed: {
 		groupedPastCourses() {
@@ -355,17 +512,18 @@ export default {
 			// Return a new object with the sorted keys
 			return sortedKeys.reduce((acc, key) => {
 				acc[key] = this.groupedPastCourses[key];
+				console.log(acc);
 				return acc;
 			}, {});
 		},
 	},
 	async created() {
-		try {
-			const response = await axios.get("http://localhost:3000/api/users");
-			this.user = response.data.find((u) => u.id === 1) || {};
-		} catch (error) {
-			console.error("Error fetching user:", error);
-		}
+		// try {
+		// 	const response = await axios.get("http://localhost:3000/api/users");
+		// 	user = response.data.find((u) => u.id === 1) || {};
+		// } catch (error) {
+		// 	console.error("Error fetching user:", error);
+		// }
 
 	},
 	mounted() {
@@ -439,6 +597,20 @@ export default {
 .float-right {
 	float: right;
 }
+
+.drop-zone{
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 50px auto;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 50px; /* Set a minimum height for the drop zone */
+    min-width: 120px; /* Set a minimum width for the drop zone */
+    flex-direction:row;
+
+  }
 
 .scrollable-column {
     max-height: calc(100vh - 64px); /* Adjust for App Bar height */
