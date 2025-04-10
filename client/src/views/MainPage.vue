@@ -2,8 +2,8 @@
 	<v-container fluid>
 		<v-app-bar color="red-darken-4" app>
 			<v-btn icon @click="$router.go(-1)">
-                <v-icon>mdi-arrow-left</v-icon>
-            </v-btn>
+				<v-icon>mdi-arrow-left</v-icon>
+			</v-btn>
 			<v-img
 				class="mx-2"
 				src="../assets/U_Calgary_Logo.png"
@@ -12,10 +12,7 @@
 				contain
 			></v-img>
 
-			<v-toolbar-title class="ml-2">
-				Degree Navigator
-			</v-toolbar-title>
-
+			<v-toolbar-title class="ml-2"> Degree Navigator </v-toolbar-title>
 		</v-app-bar>
 		<v-row>
 			<!-- Left half of page (Timeline View) -->
@@ -96,7 +93,9 @@
 
 					<!-- Past Courses -->
 					<v-timeline-item
-						v-for="(courses, semester) in timelineState.slice(0, numSemestersToRender).reverse()"
+						v-for="(courses, semester) in timelineState
+							.slice(0, numSemestersToRender)
+							.reverse()"
 						:key="semester"
 						dot-color="teal"
 						size="large"
@@ -105,12 +104,18 @@
 							<v-avatar color="teal" size="24px"> </v-avatar>
 						</template>
 						<template v-slot:opposite>
-							<span>TimelineStateIdx:{{ numSemestersToRender - semester - 1 }}</span>
+							<span
+								>TimelineStateIdx:{{
+									numSemestersToRender - semester - 1
+								}}</span
+							>
 						</template>
-						<v-card class="drop-zone" 
-						@drop="onDrop($event, numSemestersToRender - semester - 1)" 
-						@dragenter.prevent @dragover.prevent>
-
+						<v-card
+							class="drop-zone"
+							@drop="onDrop($event, numSemestersToRender - semester - 1)"
+							@dragenter.prevent
+							@dragover.prevent
+						>
 							<v-card-title class="text-h5"></v-card-title>
 							<v-card-text>
 								<v-slide-group multiple class="d-flex">
@@ -135,18 +140,18 @@
 													class="course-icon"
 													:color="
 														course.completionStatus === 'Completed'
-														? 'green'
-														: course.completionStatus === 'In Progress'
-														? 'yellow'
-														: 'red'
+															? 'green'
+															: course.completionStatus === 'In Progress'
+															? 'yellow'
+															: 'red'
 													"
 												>
 													{{
-														course.completionStatus === 'Completed'
-														? "mdi-checkbox-marked-circle"
-														: course.completionStatus === 'In Progress'
-														? "mdi-border-color"
-														: "mdi-cancel"
+														course.completionStatus === "Completed"
+															? "mdi-checkbox-marked-circle"
+															: course.completionStatus === "In Progress"
+															? "mdi-border-color"
+															: "mdi-cancel"
 													}}
 												</v-icon>
 											</div>
@@ -164,21 +169,19 @@
 			</v-col>
 			<!-- Right half of page (Everything Else) -->
 			<v-col cols="5" class="scrollable-column">
-				
 				<!-- Warning Box -->
-				<v-card >
+				<v-card>
 					<v-card-title>Warning Logs</v-card-title>
 					<v-card-text>
 						<v-textarea
-						v-model="warningLogs"
-						auto-grow
-						readonly
-						variant="outlined"
-						class="warning-text"
+							v-model="warningLogs"
+							auto-grow
+							readonly
+							variant="outlined"
+							class="warning-text"
 						></v-textarea>
 					</v-card-text>
 				</v-card>
-				
 
 				<!-- Search Bar -->
 				<v-text-field
@@ -188,13 +191,30 @@
 					clearable
 					class="search-bar"
 				></v-text-field>
-				
+
+				<!-- Search Results -->
+				<v-list two-line v-if="filteredCourses.length > 0">
+					<v-list-item
+						v-for="course in filteredCourses"
+						:key="course.code"
+						:title="course.id + ' - ' + course.name"
+						@click="goToCourse(course)"
+					>
+						<template v-slot:prepend>
+							<v-icon color="primary">mdi-book-open-page-variant</v-icon>
+						</template>
+
+						<template v-slot:subtitle>
+							{{ course.description }}
+						</template>
+					</v-list-item>
+				</v-list>
+
 				<!-- Requirements Report -->
-				 <v-card>
+				<v-card>
 					<v-card-title>
 						Requirements Report
 						<v-sheet class="d-flex align-center">
-							
 							<!-- Progress Bar -->
 							<v-progress-linear
 								:location="null"
@@ -213,77 +233,55 @@
 				</v-card>
 
 				<!-- Dropdown Table -->
-				<v-expansion-panels
-					variant="accordion"
-					multiple="true"
-				>
-					<v-expansion-panel
-						expand-icon=""
-						readonly="true"
-					>
+				<v-expansion-panels variant="accordion" multiple="true">
+					<v-expansion-panel expand-icon="" readonly="true">
 						<v-expansion-panel-title>
 							<v-row>
-
-								<v-col class="d-flex justify-left align-center">
-									Status
-								</v-col>
+								<v-col class="d-flex justify-left align-center"> Status </v-col>
 								<v-col class="d-flex justify-end align-center">
 									Total Credits
 								</v-col>
-								</v-row>
+							</v-row>
 						</v-expansion-panel-title>
 					</v-expansion-panel>
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
-
 								<v-col class="d-flex justify-left">
-									<v-chip color="success" label>
-										Completed
-									</v-chip>
+									<v-chip color="success" label> Completed </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center">
-									48 / 66
-								</v-col>
-								</v-row>
+								<v-col class="d-flex justify-end align-center"> 48 / 66 </v-col>
+							</v-row>
 						</v-expansion-panel-title>
 						<v-expansion-panel-text>
 							<v-table>
 								<thead>
 									<tr>
-									<th>Prerequisite(s)</th>
-									<th>Course</th>
-									<th>Grade</th>
-									<th>Credits</th>
-									<th>Status</th>
+										<th>Prerequisite(s)</th>
+										<th>Course</th>
+										<th>Grade</th>
+										<th>Credits</th>
+										<th>Status</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-									<td>
-										<v-icon
-											color="green"
-										>
-											mdi-check-circle
-										</v-icon>
-									</td>
-									<td>CS 251</td>
-									<td>B+</td>
-									<td>3</td>
-									<td><v-chip color="green">Completed</v-chip></td>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CS 251</td>
+										<td>B+</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
 									</tr>
 									<tr>
-									<td>
-										<v-icon
-											color="green"
-										>
-											mdi-check-circle
-										</v-icon>
-									</td>
-									<td>CS 255</td>
-									<td>B+</td>
-									<td>3</td>
-									<td><v-chip color="green">Completed</v-chip></td>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CS 255</td>
+										<td>B+</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
 									</tr>
 								</tbody>
 							</v-table>
@@ -292,30 +290,21 @@
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
-
 								<v-col class="d-flex justify-left">
-									<v-chip color="warning" label>
-										In Progress
-									</v-chip>
+									<v-chip color="warning" label> In Progress </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center">
-									9 / 66
-								</v-col>
-								</v-row>
+								<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+							</v-row>
 						</v-expansion-panel-title>
 					</v-expansion-panel>
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
 								<v-col class="d-flex justify-left">
-									<v-chip  color="error" label>
-										Incomplete
-									</v-chip>
+									<v-chip color="error" label> Incomplete </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center">
-									9 / 66
-								</v-col>
-								</v-row>
+								<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+							</v-row>
 						</v-expansion-panel-title>
 					</v-expansion-panel>
 				</v-expansion-panels>
@@ -326,142 +315,207 @@
 
 <script>
 import axios from "axios";
-import {ref, onMounted,computed} from "vue";
+import { ref, onMounted, computed } from "vue";
 export default {
 	name: "MainPage",
 	data() {
 		return {
 			user: {},
 			warningLogs: "",
-
+			searchQuery: "",
+			allCourses: [], // will load from backend
 		};
 	},
 
 	setup() {
 		// Create a ref to hold the timelineState array
-  		const timelineState = ref(Array([],[],[],[],[],[],[],[],[],[],
-                                    [],[],[],[],[],[],[],[],[],[],
-                                    [],[],[],[],[],[],[],[],[],[],
-                                    [],[])); // Hard-coded for 32 semesters (8yrs)		
+		const timelineState = ref(
+			Array(
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				[]
+			)
+		); // Hard-coded for 32 semesters (8yrs)
 		const user = ref({});
-		
 
-		let numSemestersToRender = ref(parseInt(localStorage.getItem('numSemestersToRender')) || 6);
+		let numSemestersToRender = ref(
+			parseInt(localStorage.getItem("numSemestersToRender")) || 6
+		);
 
-		
 		// Method to initialize timelineState with 32 sub-arrays
 		const initializeTimelineState = () => {
-			
 			timelineState.value = Array.from({ length: 32 }, () => []);
 
 			// These values are the ones that should always be in the timeline, and shouldn't be changed.
 			// Fall 2o24
-			timelineState.value[0].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			
+			timelineState.value[0].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+
 			// Winter 2025
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
 
 			// Fall 2025
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "In Progress"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
-											"completionStatus": "In Progress"});
-		};										
+			timelineState.value[4].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[1].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "CPSC100",
+				semester: "Fall 2024",
+				completionStatus: "In Progress",
+			});
+		};
 
-		    // Method to fetch user data
-			const fetchUserData = async () => {
-        try {
-			const response = await axios.get('http://localhost:3000/api/users');
-			user.value = response.data.find((u) => u.id === 1) || {};
-		} catch (error) {
-			console.error('Error fetching user:', error);
+		// Method to fetch user data
+		const fetchUserData = async () => {
+			try {
+				const response = await axios.get("http://localhost:3000/api/users");
+				user.value = response.data.find((u) => u.id === 1) || {};
+			} catch (error) {
+				console.error("Error fetching user:", error);
 			}
 		};
 
-    // Fetch user data when the component is mounted
-    onMounted(() => {
-      fetchUserData();
-    });
+		// Fetch user data when the component is mounted
+		onMounted(() => {
+			fetchUserData();
+		});
 		// Call the method to initialize the state
 		initializeTimelineState();
-	
 
 		console.log(timelineState.value);
-		
-	const startDrag = (event, item) => {
-        console.log('start drag', item);
-        event.dataTransfer.dropEffect = 'move';
-        event.dataTransfer.effectAllowed = 'move';
-        event.dataTransfer.setData('course_code', item);
-      };
 
+		const startDrag = (event, item) => {
+			console.log("start drag", item);
+			event.dataTransfer.dropEffect = "move";
+			event.dataTransfer.effectAllowed = "move";
+			event.dataTransfer.setData("course_code", item);
+		};
 
+		const onDrop = (event, semesterIndex) => {
+			const course_code = event.dataTransfer.getData("course_code");
+			console.log(
+				"Course Being Dropped:",
+				course_code,
+				"into semester",
+				semesterIndex
+			);
 
-    const onDrop = (event, semesterIndex) => {
+			if (!course_code) return;
 
-		const course_code = event.dataTransfer.getData('course_code');
-    console.log('Course Being Dropped:', course_code, 'into semester', semesterIndex);
+			let movedCourse = null;
 
-    if (!course_code) return;
+			// Search for the course and remove it from its original semester
+			for (let i = 0; i < timelineState.value.length; i++) {
+				const semester = timelineState.value[i];
+				const courseIndex = semester.findIndex(
+					(course) => course.course === course_code
+				);
+				if (courseIndex !== -1) {
+					movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
+					break; // Stop searching once found
+				}
+			}
+			console.log(movedCourse);
+			if (movedCourse) {
+				// Add the extracted course object to the new semester
+				timelineState.value[semesterIndex].push(movedCourse);
+			}
 
-    let movedCourse = null;
-
-    // Search for the course and remove it from its original semester
-    for (let i = 0; i < timelineState.value.length; i++) {
-        const semester = timelineState.value[i];
-        const courseIndex = semester.findIndex(course => course.course === course_code);
-        if (courseIndex !== -1) {
-            movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
-            break; // Stop searching once found
-        }
-    }
-	console.log(movedCourse);
-    if (movedCourse) {
-        // Add the extracted course object to the new semester
-        timelineState.value[semesterIndex].push(movedCourse);
-    }
-
-    console.log('Updated timelineState:', timelineState.value);
-	}
+			console.log("Updated timelineState:", timelineState.value);
+		};
 
 		return {
 			timelineState,
@@ -470,22 +524,25 @@ export default {
 			numSemestersToRender,
 			startDrag,
 			onDrop,
-
 		};
-
 	},
 
 	methods: {
-		
 		addWarning(message) {
-		this.warningLogs += `\n⚠️ ${message}⚠️`;
+			this.warningLogs += `\n⚠️ ${message}⚠️`;
 		},
 
 		// Function to update the timeline state with sorted courses
 		updateTimelineState() {
 			// console.log(this.user.pastCourses);
 			// console.log(this.groupedPastCourses);
-		}
+		},
+		goToCourse(course) {
+			this.$router.push({
+				name: "course-overview",
+				params: { courseId: course.id },
+			});
+		},
 	},
 
 	computed: {
@@ -516,6 +573,17 @@ export default {
 				return acc;
 			}, {});
 		},
+
+		filteredCourses() {
+			if (!this.searchQuery) return [];
+			const query = this.searchQuery.toLowerCase();
+
+			return this.allCourses.filter((course) => {
+				const nameMatch = (course.name || "").toLowerCase().includes(query);
+				const idMatch = (course.id || "").toLowerCase().includes(query);
+				return nameMatch || idMatch;
+			});
+		},
 	},
 	async created() {
 		// try {
@@ -524,13 +592,21 @@ export default {
 		// } catch (error) {
 		// 	console.error("Error fetching user:", error);
 		// }
-
 	},
 	mounted() {
-    // Call addWarning after the page is mounted
-    this.addWarning("Missing CPSC 331 in Dashboard. Drag and drop it from requirements report");
-  },
-	
+		// Call addWarning after the page is mounted
+		this.addWarning(
+			"Missing CPSC 331 in Dashboard. Drag and drop it from requirements report"
+		);
+		axios
+			.get("http://localhost:3000/api/courses") // adjust this path as needed
+			.then((response) => {
+				this.allCourses = response.data;
+			})
+			.catch(() => {
+				this.addWarning("Failed to load course data.");
+			});
+	},
 };
 </script>
 
@@ -598,52 +674,46 @@ export default {
 	float: right;
 }
 
-.drop-zone{
-    display: flex;
-    width: auto;
-    height: auto;
-    margin: 50px auto;
-    background-color: lightgray;
-    border-radius: 10px;
-    padding: 10px;
-    min-height: 50px; /* Set a minimum height for the drop zone */
-    min-width: 120px; /* Set a minimum width for the drop zone */
-    flex-direction:row;
-
-  }
+.drop-zone {
+	display: flex;
+	width: auto;
+	height: auto;
+	margin: 50px auto;
+	background-color: lightgray;
+	border-radius: 10px;
+	padding: 10px;
+	min-height: 50px; /* Set a minimum height for the drop zone */
+	min-width: 120px; /* Set a minimum width for the drop zone */
+	flex-direction: row;
+}
 
 .scrollable-column {
-    max-height: calc(100vh - 64px); /* Adjust for App Bar height */
-    overflow-y: auto; /* Enables vertical scrolling */
-    padding-right: 8px; /* Optional: prevents scrollbar from overlapping content */
+	max-height: calc(100vh - 64px); /* Adjust for App Bar height */
+	overflow-y: auto; /* Enables vertical scrolling */
+	padding-right: 8px; /* Optional: prevents scrollbar from overlapping content */
 }
 
 .log-box {
-  background-color: #fff3cd; /* Light yellow background */
+	background-color: #fff3cd; /* Light yellow background */
 
-
-  overflow-y: auto;
+	overflow-y: auto;
 }
 
 .warning-text {
-
-  color: #856404; /* Darker text for readability */
-  font-weight: bold;
-
+	color: #856404; /* Darker text for readability */
+	font-weight: bold;
 }
 
 .warning-text .v-input__control {
-  background-color: #fff3cd !important; /* Yellow background */
+	background-color: #fff3cd !important; /* Yellow background */
 }
-
 
 .search-bar {
-  width: 66%;           /* 2/3 of the width */
-  border-radius: 8px;   /* Rounded corners */
-  margin: 10px auto;    /* Center the component and add margin */
-  padding: 10px;        /* Padding around the text field */
-  margin-left: 0;
-  margin-right: auto;
+	width: 66%; /* 2/3 of the width */
+	border-radius: 8px; /* Rounded corners */
+	margin: 10px auto; /* Center the component and add margin */
+	padding: 10px; /* Padding around the text field */
+	margin-left: 0;
+	margin-right: auto;
 }
-
 </style>
