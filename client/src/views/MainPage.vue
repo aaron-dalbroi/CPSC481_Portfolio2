@@ -2,21 +2,73 @@
 	<v-container fluid>
 		<v-app-bar color="red-darken-4" app>
 			<v-btn icon @click="$router.go(-1)">
-                <v-icon>mdi-arrow-left</v-icon>
-            </v-btn>
+			<v-icon>mdi-arrow-left</v-icon>
+			</v-btn>
+			
 			<v-img
-				class="mx-2"
-				src="../assets/U_Calgary_Logo.png"
-				max-height="40"
-				max-width="40"
-				contain
+			class="mx-2"
+			src="../assets/U_Calgary_Logo.png"
+			max-height="40"
+			max-width="40"
+			contain
 			></v-img>
 
 			<v-toolbar-title class="ml-2">
-				Degree Navigator
+			Degree Navigator
 			</v-toolbar-title>
 
+			<v-spacer></v-spacer>
+
+			<!-- Help Button -->
+			<v-btn icon @click="helpDialog = true">
+			<v-icon color="white">mdi-help-circle-outline</v-icon>
+			</v-btn>
+
+			<!-- Help Dialog -->
+
+			<v-dialog v-model="helpDialog" max-width="500">
+			<v-card>
+				<v-card-title class="headline">Need Help?</v-card-title>
+
+				<v-card-text>
+					<h3 class="mb-3">For first time Users</h3>
+
+					<v-expansion-panels>
+						<v-expansion-panel>
+						<v-expansion-panel-title>My Schedule is Empty!</v-expansion-panel-title>
+						<v-expansion-panel-text>
+							Don't panic! We've made you a template to get you started. Click on the "Load Template" button to load a pre-defined schedule.
+						</v-expansion-panel-text>
+						</v-expansion-panel>
+					</v-expansion-panels>	
+				</v-card-text>	
+
+
+				<v-card-text>
+				<h3 class="mb-3">How do I...</h3>
+
+				<v-expansion-panels>
+					<v-expansion-panel
+					v-for="(content, title) in helpContent"
+					:key="title"
+					>
+					<v-expansion-panel-title>{{ title }}</v-expansion-panel-title>
+					<v-expansion-panel-text>
+						{{ content }}
+					</v-expansion-panel-text>
+					</v-expansion-panel>
+				</v-expansion-panels>
+				</v-card-text>
+
+				<v-card-actions>
+				<v-spacer></v-spacer>
+				<v-btn color="red-darken-4" text @click="helpDialog = false">Close</v-btn>
+				</v-card-actions>
+			</v-card>
+			</v-dialog>
 		</v-app-bar>
+
+
 		<v-row>
 			<!-- Left half of page (Timeline View) -->
 			<v-col cols="7" class="scrollable-column">
@@ -33,8 +85,30 @@
 									<div>
 										<v-btn @click="addSemester">Show New Semester</v-btn>
 										<v-btn @click="removeSemester">Hide Newest Semester</v-btn>
-										<v-btn @click="loadTemplate">Load Template</v-btn>
+										<v-btn @click="loadTemplateDialog = true">Load Template</v-btn>
 										<v-btn @click="saveTemplate">Save Template</v-btn>
+
+										<!-- Load Template Dialog -->
+									<v-dialog v-model="loadTemplateDialog" max-width="400">
+									<v-card>
+										<v-card-title class="headline">Load Template</v-card-title>
+										<v-card-text>
+										<v-select
+											v-model="selectedTemplate"
+											:items="savedTemplates"
+											label="Select a template"
+										></v-select>
+										</v-card-text>
+
+										<v-card-actions>
+										<v-spacer></v-spacer>
+										<v-btn text color="red-darken-4" @click="loadTemplate(selectedTemplate)">Load</v-btn>
+										<v-btn text @click="loadTemplateDialog = false">Cancel</v-btn>
+										</v-card-actions>
+									</v-card>
+									</v-dialog>
+
+
 
 									</div>
 								</v-list-item-content>
@@ -45,63 +119,6 @@
 
 				<!-- Timeline Section -->
 				<v-timeline align="start" reverse side="end">
-					<!-- Current Courses (at the top of the timeline) -->
-					<v-timeline-item
-						v-if="user.currentCourses && user.currentCourses.length"
-						:key="'current-courses'"
-						dot-color="teal-lighten-3"
-						size="large"
-					>
-						<template v-slot:icon>
-							<v-avatar color="teal" size="24px"> </v-avatar>
-						</template>
-						<template v-slot:opposite>
-							<span>{{ user.currentCourses[0].semester }}</span>
-						</template>
-						<v-card class="elevation-2">
-							<v-card-title class="text-h5">Current Semester</v-card-title>
-							<v-card-text>
-								<v-slide-group multiple class="d-flex">
-									<v-slide-item
-										v-for="course in user.currentCourses"
-										:key="course.course"
-										class="mb-2"
-									>
-										<!-- Make each course a button -->
-										<v-btn
-											:to="{
-												name: 'course-overview',
-												params: { courseId: course.course },
-											}"
-											block
-											class="course-btn"
-										>
-											<!-- Course Title and Icon centered -->
-											<div class="d-flex justify-center align-center">
-												<span class="course-name">{{ course.course }}</span>
-												<v-icon
-													class="course-icon"
-													:color="
-														course.completionStatus === 'In Progress'
-															? 'warning'
-															: 'gray'
-													"
-												>
-													mdi-progress-check
-												</v-icon>
-											</div>
-											<!-- Status on the top-right -->
-											<v-card-subtitle class="status">{{
-												course.completionStatus
-											}}</v-card-subtitle>
-										</v-btn>
-									</v-slide-item>
-								</v-slide-group>
-							</v-card-text>
-						</v-card>
-					</v-timeline-item>
-
-					<!-- Past Courses -->
 					<v-timeline-item
 						v-for="(courses, semester) in timelineState.slice(0, numSemestersToRender).reverse()"
 						:key="semester"
@@ -340,12 +357,23 @@
 <script>
 import axios from "axios";
 import {ref, onMounted,computed} from "vue";
+import { load } from "webfontloader";
 export default {
 	name: "MainPage",
 	data() {
 		return {
 			user: {},
 			warningLogs: "",
+			helpDialog: false,
+			helpContent: {
+				"Navigate between semesters": "Use the left and right arrows to switch between semesters.",
+				"Add a course to my timeline": "Click on a course to add it to your timeline.",
+				"Check prerequisites for a course": "Hover over a course to see its prerequisites.",
+				"Remove a course from my timeline": "Click on a course in your timeline to remove it.",
+			},
+
+			selectedTemplate: null,
+			savedTemplates: ["Starter Template"], // Hardcoded template
 
 		};
 	},
@@ -374,6 +402,7 @@ export default {
 
 		// Track whether a semester is collapsed or not
 		const collapsed = ref(Array(32).fill(false));
+		const loadTemplateDialog = ref(false);
 
 		let numSemestersToRender = ref(parseInt(localStorage.getItem('numSemestersToRender')) || 6);
 
@@ -385,36 +414,36 @@ export default {
 
 			// These values are the ones that should always be in the timeline, and shouldn't be changed.
 			// Fall 2o24
-			timelineState.value[0].push({	"course": "CPSC100",
+			timelineState.value[0].push({	"course": "CPSC231",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
+			timelineState.value[0].push({	"course": "MATH249",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
+			timelineState.value[0].push({	"course": "PHIL279",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
+			timelineState.value[0].push({	"course": "Non-Science Option",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC100",
+			timelineState.value[0].push({	"course": "Non-Science Option",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
 			
 			// Winter 2025
-			timelineState.value[1].push({	"course": "CPSC100",
+			timelineState.value[1].push({	"course": "CPSC233",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
+			timelineState.value[1].push({	"course": "CPSC251",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
+			timelineState.value[1].push({	"course": "MATH211",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
+			timelineState.value[1].push({	"course": "CPSC180",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[1].push({	"course": "CPSC100",
+			timelineState.value[1].push({	"course": "CPSC190",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
 
@@ -496,7 +525,6 @@ export default {
         const getSemesterName = semesterIndex => semesterNames[semesterIndex];
 		const getSemesterIconColor = (semesterIndex) => {
 			
-			console.log(semesterIndex);
 			const semesterName = getSemesterName(semesterIndex);
 			if (semesterName.includes("Fall")) return "orange";
 			if (semesterName.includes("Winter")) return "blue";
@@ -527,6 +555,32 @@ export default {
 				}
 			};
 
+			// Load a bunch of courses into the timelineState array for demo purposes.
+			const loadTemplate = (selectedTemplate) => {
+
+				
+				// If the user selected the starter template.
+				if(selectedTemplate != null){
+					
+					// Make timelineState the desired demo state.
+					
+					// First, clear out anything that might already be in the timelineState array.
+					for(let i = 0; i < timelineState.value.length; i++){
+						
+						// Skip the first 2 fall/winter semesters, as they are already filled with courses that shouldnt be deleted.
+						if(i != 0 && i != 1 && i != 4 && i != 5){
+							
+							// Erase all other data.
+							timelineState.value[i] = [];
+						}
+					}
+
+
+					loadTemplateDialog.value = false;
+				}
+
+				
+			};
 
 		return {
 			timelineState,
@@ -541,6 +595,8 @@ export default {
 			toggleCollapse,
 			addSemester,
 			removeSemester,
+			loadTemplate,
+			loadTemplateDialog,
 
 		};
 
