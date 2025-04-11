@@ -1117,7 +1117,7 @@ export default {
 		// Method to fetch user data
 		const fetchUserData = async () => {
 			try {
-				const response = await axios.get("https://cpsc481-portfolio2.onrender.com/api/users");
+				const response = await axios.get("http://localhost:3000/api/users");
 				user.value = response.data.find((u) => u.id === 1) || {};
 			} catch (error) {
 				console.error("Error fetching user:", error);
