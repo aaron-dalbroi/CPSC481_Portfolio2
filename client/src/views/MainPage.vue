@@ -218,7 +218,7 @@
 			<v-col cols="5" class="scrollable-column">
 				<!-- Warning Box -->
 				<v-card>
-					<v-card-title>Warning Logs</v-card-title>
+					<v-card-title>Action Required</v-card-title>
 					<v-card-text>
 						<v-textarea
 							v-model="warningLogs"
@@ -604,6 +604,8 @@ export default {
 			if (!course_code) return;
 
 			let movedCourse = null;
+			
+			// This handles the case where we are moving a course already in the timeline.
 
 			// Search for the course and remove it from its original semester
 			for (let i = 0; i < timelineState.value.length; i++) {
@@ -615,6 +617,16 @@ export default {
 					movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
 					break; // Stop searching once found
 				}
+			}
+			
+			// This handles the case where we are moving a course from the search results.
+			if(movedCourse == null){
+
+				movedCourse = {
+					course: course_code,
+					semester: semesterNames[semesterIndex],
+					completionStatus: "Not Completed", // Default status of "Not Completed"
+				};
 			}
 			console.log(movedCourse);
 			if (movedCourse) {
