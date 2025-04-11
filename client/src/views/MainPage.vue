@@ -340,7 +340,7 @@
 								<v-col class="d-flex justify-left">
 									<v-chip color="success" label> Completed </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center"> 48 / 66 </v-col>
+								<v-col class="d-flex justify-end align-center"> 33 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
 						<v-expansion-panel-text>
@@ -359,7 +359,7 @@
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>CS 251</td>
+										<td>CPSC 190</td>
 										<td>B+</td>
 										<td>3</td>
 										<td><v-chip color="green">Completed</v-chip></td>
@@ -368,8 +368,80 @@
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>CS 255</td>
+										<td>CPSC 180</td>
 										<td>B+</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>MATH 211</td>
+										<td>B-</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 251</td>
+										<td>C+</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 233</td>
+										<td>A</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 225</td>
+										<td>A+</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 277</td>
+										<td>A-</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>PHIL 279</td>
+										<td>A</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>MATH 249</td>
+										<td>A-</td>
+										<td>3</td>
+										<td><v-chip color="green">Completed</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 231</td>
+										<td>A+</td>
 										<td>3</td>
 										<td><v-chip color="green">Completed</v-chip></td>
 									</tr>
@@ -453,7 +525,7 @@
 								<v-col class="d-flex justify-left">
 									<v-chip color="error" label> Incomplete </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
+								<v-col class="d-flex justify-end align-center"> 18 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
 						<v-expansion-panel-text>
@@ -469,8 +541,43 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>CPSC 371</td>
-										<td>CPSC 471</td>
+										<td><v-icon color="green"> mdi-check-circle </v-icon></td>
+										<td>CPSC 599</td>
+										<td>F</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+									<tr>
+										<td>CPSC 251</td>
+										<td>CPSC 433</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+									<tr>
+										<td>CPSC 233, MATH 249</td>
+										<td>CPSC 355</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+									<tr>
+										<td>PHIL 279, STATS 251</td>
+										<td>PHIL 413</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+									<tr>
+										<td>MATH 355</td>
+										<td>MATH 359</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+									<tr>
+										<td>CPSC 231</td>
+										<td>CPSC 530</td>
 										<td>-</td>
 										<td>3</td>
 										<td><v-chip color="red">Incomplete</v-chip></td>
