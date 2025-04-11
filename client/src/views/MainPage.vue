@@ -182,6 +182,19 @@
 											:class="{ 'gray-btn': (numSemestersToRender-semester-1) < 6 }"
 
 										>
+											<!-- Small delete button on hover -->
+											<div class="delete-btn-container" style="position: absolute; top: 20; left: 0;"
+											v-if="numSemestersToRender - semester - 1 >= 6">
+												<v-btn
+													icon
+													class="delete-btn"
+    												@mousedown.stop="removeCourse(course.course)"
+													style="z-index: 100;" 
+												>
+													<v-icon color="red">mdi-close</v-icon>
+												</v-btn>
+											</div>
+
 											<!-- Course Title and Icon centered -->
 											<div class="d-flex justify-center align-center">
 												<span class="course-name">{{ course.course }}</span>
@@ -775,6 +788,24 @@ export default {
 				alert("Template saved successfully!");
 			};
 
+			const removeCourse = (course) => {
+				// Remove the course from the timelineState array
+				for(let i = 0; i < timelineState.value.length; i++) {
+					const semester = timelineState.value[i];
+					const courseIndex = semester.findIndex(
+						(courseObj) => courseObj.course === course
+					);
+					if (courseIndex !== -1) {
+						semester.splice(courseIndex, 1); // Remove the course
+						break; // Stop searching once found
+					}
+				}
+				// Persist the change
+				localStorage.setItem(
+					"timelineState",
+					JSON.stringify(timelineState.value)
+				); 
+			}
 		return {
 			timelineState,
 			initializeTimelineState,
@@ -791,8 +822,10 @@ export default {
 			loadTemplate,
 			loadTemplateDialog,
 			saveTemplate,
+			removeCourse,
 		};
 	},
+	
 
 	methods: {
 		addWarning(message) {
@@ -1019,5 +1052,52 @@ export default {
 	padding: 10px; /* Padding around the text field */
 	margin-left: 0;
 	margin-right: auto;
+}
+
+.course-btn {
+	position: relative;
+}
+
+.delete-btn-container {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+}
+
+.course-btn:hover .delete-btn-container {
+	opacity: 1;
+}
+
+.delete-btn {
+	background-color: white;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	min-width: 24px;
+}
+
+/* Make the course button highlight on hover */
+.course-btn {
+  transition: background-color 0.3s ease;
+}
+
+.course-btn:hover {
+  background-color: #f0f0f0; /* Or your desired hover effect */
+  color: black; /* Change text color on hover */
+}
+
+/* Make the delete button hover independently without triggering course button's hover */
+.delete-btn-container {
+  pointer-events: auto; /* Allow interaction with the delete button */
+}
+
+.delete-btn-container:hover .delete-btn {
+  background-color: rgba(255, 0, 0, 0.2); /* Add a subtle background when hovering delete button */
+}
+
+.delete-btn-container:hover .course-btn {
+  pointer-events: none; /* Disable hover interaction with course button when hovering delete button */
 }
 </style>
