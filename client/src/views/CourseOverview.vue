@@ -51,6 +51,8 @@
 								<div
 									class="rich-media-node"
 									:style="{ border: collapsed ? '2px solid grey' : '' }"
+									@click="handleNodeClick(node.id)"
+									style="cursor: pointer"
 								>
 									<span class="node-id">{{ node.id }}</span>
 									<span class="node-name">{{ node.name }}</span>
@@ -67,6 +69,22 @@
 
 			<!-- Right half of page -->
 			<v-col cols="5">
+				<!-- Offered In -->
+				<v-card v-if="course.semesterAvailability" class="mb-4">
+					<v-card-title>Offered in:</v-card-title>
+					<v-card-text>
+						<v-chip
+							v-for="(semester, index) in course.semesterAvailability"
+							:key="index"
+							class="ma-1"
+							color="primary"
+							text-color="white"
+							small
+						>
+							{{ semester }}
+						</v-chip>
+					</v-card-text>
+				</v-card>
 				<!-- Syllabus -->
 				<v-card v-if="course.syllabus">
 					<v-card-title>Course Syllabus</v-card-title>
@@ -269,7 +287,8 @@ export default {
 	},
 	async created() {
 		try {
-			const courseId = this.$route.params.courseId;
+			const courseId = "STAT300"; // set default to STAT300
+			//const courseId = this.$route.params.courseId;
 			const response = await axios.get(
 				`http://localhost:3000/api/courses/${courseId}`
 			);
@@ -348,6 +367,28 @@ export default {
 
 			return "";
 		},
+		// USE THIS IF WANT TO USE SERVER
+		// async handleNodeClick(courseId) {
+		// 	try {
+		// 		const response = await axios.get(`/api/courses/${courseId}`);
+		// 		this.course = response.data;
+		// 	} catch (error) {
+		// 		console.error("Failed to load course data for:", courseId, error);
+		// 		this.addWarning?.(`Failed to load course info for ${courseId}`);
+		// 	}
+		// },
+		async handleNodeClick(courseId) {
+			try {
+				const courseId = "CPSC100";
+				const response = await axios.get(
+					`http://localhost:3000/api/courses/${courseId}`
+				);
+				this.course = response.data;
+			} catch (error) {
+				console.error("Failed to load course data for:", courseId, error);
+				this.addWarning?.(`Failed to load course info for ${courseId}`);
+			}
+		},
 	},
 };
 </script>
@@ -416,5 +457,10 @@ export default {
 
 .node-name {
 	font-size: 12px;
+}
+
+.rich-media-node:hover {
+	background-color: #f0f0f0;
+	transition: background-color 0.2s ease;
 }
 </style>
