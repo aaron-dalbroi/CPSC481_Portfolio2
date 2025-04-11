@@ -15,14 +15,62 @@
 			<v-toolbar-title class="ml-2">
 				Select Optional Course
 			</v-toolbar-title>
+			<!-- Help Button -->
+			<v-btn icon @click="helpDialog = true">
+				<v-icon color="white">mdi-help-circle-outline</v-icon>
+			</v-btn>
+            <!-- Help Dialog -->
 
+			<v-dialog v-model="helpDialog"  max-width="500">
+				<v-card>
+					<v-card-title class="headline">Need Help?</v-card-title>
+
+					<v-card-text>
+						<h3 class="mb-3">
+                        1. Find the course you want to take.  
+                        </h3>
+                        <h3 class="mb-3">
+                        2. Click on the course name to view its details. 
+                        </h3>
+                        <h3 class="mb-3">
+                        3. Click the checkmark icon to select the course.
+                        </h3>
+
+
+						
+					</v-card-text>
+
+					<v-card-text>
+
+
+						<v-expansion-panels>
+							<v-expansion-panel
+								v-for="(content, title) in helpContent"
+								:key="title"
+							>
+								<v-expansion-panel-title>{{ title }}</v-expansion-panel-title>
+								<v-expansion-panel-text>
+									{{ content }}
+								</v-expansion-panel-text>
+							</v-expansion-panel>
+						</v-expansion-panels>
+					</v-card-text>
+
+					<v-card-actions>
+						<v-spacer></v-spacer>
+						<v-btn color="red-darken-4" text @click="helpDialog = false"
+							>Close</v-btn
+						>
+					</v-card-actions>
+				</v-card>
+			</v-dialog>
 		</v-app-bar>
       <!-- Header -->
       <v-row align="center" class="mb-4">
 
       </v-row>
   
-      <VCardTitle> Select From Valid Courses </VCardTitle>
+      <VCardTitle> Select From Valid Courses (More Courses Coming Soon!)</VCardTitle>
   
       <!-- Courses Section -->
       <v-expansion-panels multiple>
@@ -77,44 +125,32 @@
   import axios from "axios";
 
     export default {
-      props: {
-        courseId: {
-          type: String,
-          required: true,
-        },
-      },
+      
+
       data() {
         
         return {
-          faculties: ['Engineering', 'Computer Science', 'Physics'],
+            helpDialog: false,
+          faculties: ['Art', 'Computer History', 'Music'],
           courses: [
             {
-              name: 'Engineering',
+              name: 'Art',
               courses: [
                 {
-                  name: 'ENEL 503',
-                  description: 'Introduction to the fundamentals of image processing and computer vision. Image/video acquisition and raw data matrix manipulation; image processing operations and compression methods; object detection, isolation, and classification; 3D tracking and ego-motion with projective transformations.',
-                  offered: 'Winter 2025, Spring 2025',
+                  name: 'ART 100',
+                  description: 'Learn the history of art from ancient to modern times',
+                  offered: ' Spring 2028',
                 },
-                {
-                  name: 'ENEL 555',
-                  description: 'Detailed course info',
-                  offered: 'Winter 2025, Spring 2025',
-                },
-                {
-                  name: 'ENCM 449',
-                  description: 'Detailed course info',
-                  offered: 'Winter 2025, Spring 2025',
-                },
+
               ],
             },
             {
-              name: 'Computer Science',
+              name: 'History',
               courses: [],
             },
             {
-              name: 'Physics',
-              courses: [{ name: 'PHYS 554', description: 'Quantum mechanics' }],
+              name: 'Music',
+              courses: [],
             },
           ],
         }
@@ -123,11 +159,12 @@
         goBack() {
           console.log('Go back')
         },
-        viewDetails(course) {
-          console.log('View details for', course.name)
-        },
         selectCourse(course) {
-          console.log('Selected course:', course.name)
+          console.log('Selected course:', course.name);
+          //Go back to the previous page
+          // Write a flag to the local storage to indicate that a course has been selected
+            localStorage.setItem('non-science-flag', true);
+            this.$router.go(-1);
         },
       },
       

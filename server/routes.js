@@ -54,7 +54,12 @@ router.get("/courses", (req, res) => {
 router.get("/courses/:id", (req, res) => {
 	const data = loadData();
 	const courseId = req.params.id;
-	const course = data.courses.find((c) => c.id === courseId);
+	let course = data.courses.find((c) => c.id === courseId);
+
+	if(course === undefined) 
+		{
+			course = data.courses.find((c) => c.id === "Example Course");
+		}
 
 	if (!course) {
 		return res.status(404).json({ message: "Course not found" });

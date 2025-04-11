@@ -173,10 +173,7 @@
 									>
 										<!-- Make each course a button -->
 										<v-btn
-											:to="{
-												name: 'course-overview',
-												params: { courseId: course.course },
-											}"
+  											:to="getRoute(course.course)"
 											block
 											class="course-btn"
 											:class="{ 'gray-btn': (numSemestersToRender-semester-1) < 6 }"
@@ -496,14 +493,59 @@ export default {
 		let numSemestersToRender = ref(
 			parseInt(localStorage.getItem("numSemestersToRender")) || 6
 		);
-
+		const getSemesterName = (semesterIndex) => semesterNames[semesterIndex];
 		// Method to initialize timelineState with 32 sub-arrays
 		const initializeTimelineState = () => {
 			
 			// Check if timelineState is already in localStorage
 			if(JSON.parse(localStorage.getItem("timelineState")) != null){
+				
 				timelineState.value = JSON.parse(localStorage.getItem("timelineState"));
+				
+				
+				if(JSON.parse(localStorage.getItem("non-science-flag")) != null){
+					
+					// Find course with ID "Non-Science Option" and replace it with the new course
+					for(let i = 0; i < timelineState.value.length; i++){
+						for(let j = 0; j < timelineState.value[i].length; j++){
+							if(timelineState.value[i][j].course === "Non-Science Option"){
+								timelineState.value[i].splice(j, 1);
+								timelineState.value[i].push({	"course": "ART100",
+											"semester": getSemesterName(i),
+											"completionStatus": "Not Enrolled"});
+								break;
+							}
+						}
+
+					}
+
+					// clear the flag in local storage
+					localStorage.removeItem("non-science-flag");
+				}
+
+				if(JSON.parse(localStorage.getItem("non-major-field-flag")) != null){
+					
+					// Find course with ID "Non-Major Field Option" and replace it with the new course
+					for(let i = 0; i < timelineState.value.length; i++){
+						for(let j = 0; j < timelineState.value[i].length; j++){
+							if(timelineState.value[i][j].course === "Non-Major Field Option"){
+								timelineState.value[i].splice(j, 1);
+								timelineState.value[i].push({	"course": "SENG533",
+											"semester": getSemesterName(i),
+											"completionStatus": "Not Enrolled"});
+								break;
+							}
+						}
+
+					}
+
+					// clear the flag in local storage
+					localStorage.removeItem("non-major-field-flag");
+				}
+
 				return;
+			
+				
 			}
 
 			// If not, initialize it with empty arrays
@@ -686,7 +728,7 @@ export default {
 		};
 
 		// Helper functions
-		const getSemesterName = (semesterIndex) => semesterNames[semesterIndex];
+
 		const getSemesterIconColor = (semesterIndex) => {
 			const semesterName = getSemesterName(semesterIndex);
 			if (semesterName.includes("Fall")) return "orange";
@@ -806,6 +848,22 @@ export default {
 					JSON.stringify(timelineState.value)
 				); 
 			}
+
+			const getRoute = (course) => {
+				console.log("Course Clicked:" + course);
+
+				if(course==="Non-Major Field Option"){
+					return { name: "non-major-field-choice" };
+				}
+
+				else if(course==="Non-Science Option"){
+					return { name: "non-science-choice" };
+				}
+				else{
+					return { name: "course-overview", params: { courseId: course } };
+				}
+
+			};
 		return {
 			timelineState,
 			initializeTimelineState,
@@ -823,6 +881,7 @@ export default {
 			loadTemplateDialog,
 			saveTemplate,
 			removeCourse,
+			getRoute,
 		};
 	},
 	

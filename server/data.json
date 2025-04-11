@@ -489,6 +489,71 @@
 			]
 		},
 		{
+			"id": "ART100",
+			"name": "History of Art",
+			"description": "Learn the history of art from ancient to modern times",
+			"semesterAvailability": ["Winter 2025"],
+			"prerequisites": [],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Thurs 9:00 - 10:30 AM",
+							"professor": "Dr. Johnson"
+						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": [
+							"Fundementals of Art, 8th Edition"
+						],
+						"recommendedTextbooks": [],
+						"technologies": ["Art History Online"]
+					},
+					"courseLearningOutcomes": [
+						"Understand art history",
+						"Differentiate between ancient and modern art",
+						"Evaluate art pieces through critical analysis"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Quizzes",
+							"weight": "20%",
+							"dueDates": ["Sep 15", "Oct 10", "Nov 5"]
+						},
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 20, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "50%",
+							"date": "Dec 15, 2022"
+						}
+					],
+					"missedComponentsPolicy": "Missed exams require a doctor’s note. Late homework will not be accepted.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.7,
+			"reviews": [
+				{ "rating": 5, "comment": "Challenging but rewarding course!" },
+				{ "rating": 4, "comment": "Difficult material, but very well taught." }
+			]
+		},
+		{
 			"id": "STAT200",
 			"name": "Intro to Statistics",
 			"description": "Fundamentals of probability and statistics",
@@ -1465,6 +1530,73 @@
 							"time": "Tue/Thu 2:00 - 3:30 PM",
 							"professor": "Dr. Jones"
 						}
+					],
+					"courseMaterials": {
+						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],
+						"recommendedTextbooks": ["Python Programming for Beginners"],
+						"technologies": ["Python", "Jupyter Notebook"]
+					},
+					"courseLearningOutcomes": [
+						"Understand basic programming principles",
+						"Write simple Python programs",
+						"Debug and troubleshoot code effectively"
+					]
+				},
+				"assessmentEvaluationInformation": {
+					"assessmentComponents": [
+						{
+							"component": "Midterm Exam",
+							"weight": "30%",
+							"date": "Oct 15, 2022"
+						},
+						{
+							"component": "Final Exam",
+							"weight": "40%",
+							"date": "Dec 10, 2022"
+						},
+						{
+							"component": "Assignments",
+							"weight": "30%",
+							"dueDates": ["Sep 20", "Oct 5", "Nov 1"]
+						}
+					],
+					"missedComponentsPolicy": "Late assignments will receive a 10% deduction per day. Extensions can be requested via email with valid reasons.",
+					"letterGradeConversion": {
+						"A+": "90-100%",
+						"A": "85-89%",
+						"B+": "80-84%",
+						"B": "75-79%",
+						"C+": "70-74%",
+						"C": "65-69%",
+						"D": "50-64%",
+						"F": "Below 50%"
+					}
+				}
+			},
+			"rating": 4.3,
+			"reviews": [
+				{ "rating": 5, "comment": "Great introduction to CS!" },
+				{
+					"rating": 4,
+					"comment": "Well-structured course, but a bit fast-paced."
+				}
+			]
+		},
+		{
+			"id": "Example Course",
+			"name": "Example Course",
+			"description": "Description of the course will go here", 
+			"semesterAvailability": ["When the course is offered will go here"],
+			"prerequisites": [],
+			"syllabus": {
+				"courseInformation": {
+					"sections": [
+						{
+							"section": "A1",
+							"time": "Mon/Wed/Fri 10:00 - 11:00 AM",
+							"professor": "Dr. Smith"
+						}
+
 					],
 					"courseMaterials": {
 						"requiredTextbooks": ["Introduction to Computing, 3rd Edition"],

@@ -287,8 +287,11 @@ export default {
 	},
 	async created() {
 		try {
-			const courseId = "STAT300"; // set default to STAT300
-			//const courseId = this.$route.params.courseId;
+			//const courseId = "STAT300"; // set default to STAT300
+			
+			
+			
+			const courseId = this.$route.params.courseId;
 			const response = await axios.get(
 				`http://localhost:3000/api/courses/${courseId}`
 			);
