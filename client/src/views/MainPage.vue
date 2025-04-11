@@ -30,6 +30,13 @@
 									<v-list-item-subtitle>
 										{{ user.programName }} - Year {{ user.yearOfProgram }}
 									</v-list-item-subtitle>
+									<div>
+										<v-btn @click="addSemester">Show New Semester</v-btn>
+										<v-btn @click="removeSemester">Hide Newest Semester</v-btn>
+										<v-btn @click="loadTemplate">Load Template</v-btn>
+										<v-btn @click="saveTemplate">Save Template</v-btn>
+
+									</div>
 								</v-list-item-content>
 							</v-list-item>
 						</v-list>
@@ -501,7 +508,25 @@ export default {
 			const toggleCollapse = (semesterIndex) => {
 				collapsed.value[semesterIndex] = !collapsed.value[semesterIndex];
     		};
-		
+
+		    // Methods for adding/removing semesters and template actions
+			const addSemester = () => {
+				// Avoid direct mutation in places that cause recursive rendering
+				if (numSemestersToRender.value < semesterNames.length) {
+					numSemestersToRender.value += 1;
+					localStorage.setItem('numSemestersToRender', numSemestersToRender.value); // Persist the change
+				} else {
+					alert("Max number of semesters reached.");
+				}
+			};
+
+			const removeSemester = () => {
+				if (numSemestersToRender.value > 1) {
+					numSemestersToRender.value -= 1;
+					localStorage.setItem('numSemestersToRender', numSemestersToRender.value); // Persist the change
+				}
+			};
+
 
 		return {
 			timelineState,
@@ -514,6 +539,8 @@ export default {
 			getSemesterName,
 			collapsed,
 			toggleCollapse,
+			addSemester,
+			removeSemester,
 
 		};
 
@@ -641,6 +668,21 @@ export default {
 .float-right {
 	float: right;
 }
+
+.v-btn{
+	margin:10px;
+	font-weight: bold;
+
+
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.v-btn:hover {
+	background-color: darkslategray; /* Darker shade on hover */
+	color:white;
+}
+
 
 .drop-zone{
     display: flex;
