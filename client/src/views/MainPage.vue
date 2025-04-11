@@ -44,7 +44,6 @@
 						</v-expansion-panels>
 					</v-card-text>
 
-
 					<v-card-text>
 						<h3 class="mb-3">What is...</h3>
 
@@ -60,8 +59,6 @@
 							</v-expansion-panel>
 						</v-expansion-panels>
 					</v-card-text>
-
-
 
 					<v-card-text>
 						<h3 class="mb-3">How do I...</h3>
@@ -157,9 +154,13 @@
 					>
 						<template v-slot:icon>
 							<v-avatar
-  								:class="{ 'big-btn': numSemestersToRender - semester - 1 === 5, 
-										'strikethrough': numSemestersToRender - semester - 1 === 5 }" 
-								:color="getSemesterIconColor(numSemestersToRender - semester - 1)"
+								:class="{
+									'big-btn': numSemestersToRender - semester - 1 === 5,
+									strikethrough: numSemestersToRender - semester - 1 === 5,
+								}"
+								:color="
+									getSemesterIconColor(numSemestersToRender - semester - 1)
+								"
 							>
 								<!-- Shrink circle on collapse -->
 							</v-avatar>
@@ -192,20 +193,24 @@
 									>
 										<!-- Make each course a button -->
 										<v-btn
-  											:to="getRoute(course.course)"
+											:to="getRoute(course.course)"
 											block
 											class="course-btn"
-											:class="{ 'gray-btn': (numSemestersToRender-semester-1) < 6 }"
-
+											:class="{
+												'gray-btn': numSemestersToRender - semester - 1 < 6,
+											}"
 										>
 											<!-- Small delete button on hover -->
-											<div class="delete-btn-container" style="position: absolute; top: 20; left: 0;"
-											v-if="numSemestersToRender - semester - 1 >= 6">
+											<div
+												class="delete-btn-container"
+												style="position: absolute; top: 20; left: 0"
+												v-if="numSemestersToRender - semester - 1 >= 6"
+											>
 												<v-btn
 													icon
 													class="delete-btn"
-    												@mousedown.stop="removeCourse(course.course)"
-													style="z-index: 100;" 
+													@mousedown.stop="removeCourse(course.course)"
+													style="z-index: 100"
 												>
 													<v-icon color="red">mdi-close</v-icon>
 												</v-btn>
@@ -378,9 +383,69 @@
 								<v-col class="d-flex justify-left">
 									<v-chip color="warning" label> In Progress </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+								<v-col class="d-flex justify-end align-center"> 15 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
+						<v-expansion-panel-text>
+							<v-table>
+								<thead>
+									<tr>
+										<th>Prerequisite(s)</th>
+										<th>Course</th>
+										<th>Grade</th>
+										<th>Credits</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 430</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 389</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>ECON 201</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>STATS 251</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 351</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+								</tbody>
+							</v-table>
+						</v-expansion-panel-text>
 					</v-expansion-panel>
 					<v-expansion-panel>
 						<v-expansion-panel-title>
@@ -388,9 +453,31 @@
 								<v-col class="d-flex justify-left">
 									<v-chip color="error" label> Incomplete </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+								<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
+						<v-expansion-panel-text>
+							<v-table>
+								<thead>
+									<tr>
+										<th>Prerequisite(s)</th>
+										<th>Course</th>
+										<th>Grade</th>
+										<th>Credits</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>CPSC 371</td>
+										<td>CPSC 471</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="red">Incomplete</v-chip></td>
+									</tr>
+								</tbody>
+							</v-table>
+						</v-expansion-panel-text>
 					</v-expansion-panel>
 				</v-expansion-panels>
 			</v-col>
@@ -400,8 +487,8 @@
 
 <script>
 import axios from "axios";
-import {ref, onMounted,computed} from "vue";
-import demoTemplateData from '@/data/demo-template.json'
+import { ref, onMounted, computed } from "vue";
+import demoTemplateData from "@/data/demo-template.json";
 import { load } from "webfontloader";
 
 export default {
@@ -412,11 +499,15 @@ export default {
 			searchQuery: "",
 			allCourses: [], // will load from backend
 			helpDialog: false,
-			whatIsContent:{
-				"the Timeline?":"This is a visual representation of your course schedule. You can drag and drop courses here to plan out your schedule.",
-				"the \"Actions Required\" box?" :"This will show you any actions you need to take, such as enrolling in courses or completing prerequisites.",
-				"the \"Search for Courses\" bar?":"This allows you to search for courses to add to your timeline.",
-				"the Requirements Report?":"This is a comprehensive overview of your degree requirements and progress.",
+			whatIsContent: {
+				"the Timeline?":
+					"This is a visual representation of your course schedule. You can drag and drop courses here to plan out your schedule.",
+				'the "Actions Required" box?':
+					"This will show you any actions you need to take, such as enrolling in courses or completing prerequisites.",
+				'the "Search for Courses" bar?':
+					"This allows you to search for courses to add to your timeline.",
+				"the Requirements Report?":
+					"This is a comprehensive overview of your degree requirements and progress.",
 			},
 			helpContent: {
 				"Navigate between semesters":
@@ -435,11 +526,10 @@ export default {
 	},
 
 	setup() {
-
 		const warningLogs = ref("");
-		const addWarning = (message) =>{
+		const addWarning = (message) => {
 			warningLogs.value += `\n⚠️ ${message}⚠️`;
-		}
+		};
 		// The semesters are hard-coded, heres the names for each array index in timelineState
 		const semesterNames = [
 			"Fall 2024",
@@ -525,47 +615,45 @@ export default {
 		const getSemesterName = (semesterIndex) => semesterNames[semesterIndex];
 		// Method to initialize timelineState with 32 sub-arrays
 		const initializeTimelineState = () => {
-			
 			// Check if timelineState is already in localStorage
-			if(JSON.parse(localStorage.getItem("timelineState")) != null){
-				
+			if (JSON.parse(localStorage.getItem("timelineState")) != null) {
 				timelineState.value = JSON.parse(localStorage.getItem("timelineState"));
-				
-				
-				if(JSON.parse(localStorage.getItem("non-science-flag")) != null){
-					
+
+				if (JSON.parse(localStorage.getItem("non-science-flag")) != null) {
 					// Find course with ID "Non-Science Option" and replace it with the new course
-					for(let i = 0; i < timelineState.value.length; i++){
-						for(let j = 0; j < timelineState.value[i].length; j++){
-							if(timelineState.value[i][j].course === "Non-Science Option"){
+					for (let i = 0; i < timelineState.value.length; i++) {
+						for (let j = 0; j < timelineState.value[i].length; j++) {
+							if (timelineState.value[i][j].course === "Non-Science Option") {
 								timelineState.value[i].splice(j, 1);
-								timelineState.value[i].push({	"course": "ART100",
-											"semester": getSemesterName(i),
-											"completionStatus": "Not Enrolled"});
+								timelineState.value[i].push({
+									course: "ART100",
+									semester: getSemesterName(i),
+									completionStatus: "Not Enrolled",
+								});
 								break;
 							}
 						}
-
 					}
-
 
 					localStorage.removeItem("non-science-flag");
 				}
 
-				if(JSON.parse(localStorage.getItem("non-major-field-flag")) != null){
-					
+				if (JSON.parse(localStorage.getItem("non-major-field-flag")) != null) {
 					// Find course with ID "Non-Major Field Option" and replace it with the new course
-					for(let i = 0; i < timelineState.value.length; i++){
-						for(let j = 0; j < timelineState.value[i].length; j++){
-							if(timelineState.value[i][j].course === "Non-Major Field Option"){
+					for (let i = 0; i < timelineState.value.length; i++) {
+						for (let j = 0; j < timelineState.value[i].length; j++) {
+							if (
+								timelineState.value[i][j].course === "Non-Major Field Option"
+							) {
 								timelineState.value[i].splice(j, 1);
-								timelineState.value[i].push({	"course": "SENG533",
-											"semester": getSemesterName(i),
-											"completionStatus": "Not Enrolled"});
+								timelineState.value[i].push({
+									course: "SENG533",
+									semester: getSemesterName(i),
+									completionStatus: "Not Enrolled",
+								});
 								break;
 							}
 						}
-
 					}
 					localStorage.removeItem("non-major-field-flag");
 				}
@@ -574,10 +662,8 @@ export default {
 				localStorage.setItem(
 					"timelineState",
 					JSON.stringify(timelineState.value)
-				); 
+				);
 				return;
-			
-				
 			}
 
 			// If not, initialize it with empty arrays
@@ -585,22 +671,32 @@ export default {
 
 			// These values are the ones that should always be in the timeline, and shouldn't be changed.
 			// Fall 2o24
-			timelineState.value[0].push({	"course": "CPSC231",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "MATH249",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "PHIL279",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC277",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "CPSC225",
-											"semester": "Fall 2024",
-											"completionStatus": "Completed"});
-			
+			timelineState.value[0].push({
+				course: "CPSC231",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "MATH249",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "PHIL279",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC277",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+			timelineState.value[0].push({
+				course: "CPSC225",
+				semester: "Fall 2024",
+				completionStatus: "Completed",
+			});
+
 			// Winter 2025
 			timelineState.value[1].push({
 				course: "CPSC233",
@@ -629,45 +725,65 @@ export default {
 			});
 
 			// Fall 2025
-			timelineState.value[4].push({	"course": "CPSC338",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC353",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "ART130",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "MATH375",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC319",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-						
+			timelineState.value[4].push({
+				course: "CPSC338",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "CPSC353",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "ART130",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "MATH375",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[4].push({
+				course: "CPSC319",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+
 			// Winter 2026
-			timelineState.value[5].push({	"course": "CPSC340",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[5].push({	"course": "CPSC389",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[5].push({	"course": "ECON201",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[5].push({	"course": "STATS251",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});
-			timelineState.value[5].push({	"course": "CPSC371",
-											"semester": "Fall 2025",
-											"completionStatus": "In Progress"});	
+			timelineState.value[5].push({
+				course: "CPSC340",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[5].push({
+				course: "CPSC389",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[5].push({
+				course: "ECON201",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[5].push({
+				course: "STATS251",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
+			timelineState.value[5].push({
+				course: "CPSC371",
+				semester: "Fall 2025",
+				completionStatus: "In Progress",
+			});
 
 			// Persist the change
 			localStorage.setItem(
 				"timelineState",
 				JSON.stringify(timelineState.value)
-			); 
-		};										
+			);
+		};
 
 		// Method to fetch user data
 		const fetchUserData = async () => {
@@ -687,17 +803,23 @@ export default {
 		initializeTimelineState();
 
 		console.log(timelineState.value);
-	
-				// Check every course to see if "non-science" or "non-major-field" is in the timelineState array.
-				for(let i = 0; i < timelineState.value.length; i++){
-			for(let j = 0; j < timelineState.value[i].length; j++){
-				if(timelineState.value[i][j].course === "Non-Science Option"){
-					addWarning("In "+ getSemesterName(i)+ " you have not selected a non-science option. Please click the course block to select one.");
 
+		// Check every course to see if "non-science" or "non-major-field" is in the timelineState array.
+		for (let i = 0; i < timelineState.value.length; i++) {
+			for (let j = 0; j < timelineState.value[i].length; j++) {
+				if (timelineState.value[i][j].course === "Non-Science Option") {
+					addWarning(
+						"In " +
+							getSemesterName(i) +
+							" you have not selected a non-science option. Please click the course block to select one."
+					);
 				}
-				if(timelineState.value[i][j].course === "Non-Major Field Option"){
-					addWarning("In "+ getSemesterName(i)+ "You have not selected a non-major field option. Please click the course block to select one.");
-
+				if (timelineState.value[i][j].course === "Non-Major Field Option") {
+					addWarning(
+						"In " +
+							getSemesterName(i) +
+							"You have not selected a non-major field option. Please click the course block to select one."
+					);
 				}
 			}
 		}
@@ -721,7 +843,7 @@ export default {
 			if (!course_code) return;
 
 			let movedCourse = null;
-			
+
 			// This handles the case where we are moving a course already in the timeline.
 
 			// Search for the course and remove it from its original semester
@@ -731,9 +853,8 @@ export default {
 					(course) => course.course === course_code
 				);
 				if (courseIndex !== -1) {
-
 					// These semesters hold completed and enrolled courses. We dont want to move those.
-					if(i == 0 || i == 1 || i == 4 || i == 5){
+					if (i == 0 || i == 1 || i == 4 || i == 5) {
 						alert("Cannot Move Completed or Enrolled Courses in the Timeline.");
 						return;
 					}
@@ -742,16 +863,15 @@ export default {
 					break; // Stop searching once found
 				}
 			}
-			
+
 			// Check if the semester is in the past (index < 6)
-			if(semesterIndex < 6){
+			if (semesterIndex < 6) {
 				alert("Cannot move courses into past semesters.");
 				return;
 			}
 
 			// This handles the case where we are moving a course from the search results.
-			if(movedCourse == null){
-
+			if (movedCourse == null) {
 				movedCourse = {
 					course: course_code,
 					semester: semesterNames[semesterIndex],
@@ -762,12 +882,12 @@ export default {
 			if (movedCourse) {
 				// Add the extracted course object to the new semester
 				timelineState.value[semesterIndex].push(movedCourse);
-				
+
 				// Persist the change
 				localStorage.setItem(
 					"timelineState",
-				JSON.stringify(timelineState.value)
-			); 
+					JSON.stringify(timelineState.value)
+				);
 			}
 
 			console.log("Updated timelineState:", timelineState.value);
@@ -811,118 +931,112 @@ export default {
 				); // Persist the change
 			}
 		};
-			// Load a bunch of courses into the timelineState array for demo purposes.
-			const loadTemplate = async (selectedTemplate) => {
+		// Load a bunch of courses into the timelineState array for demo purposes.
+		const loadTemplate = async (selectedTemplate) => {
+			// If the user selected the starter template.
+			if (selectedTemplate != null) {
+				// Extract the "demo-template" object
+				let data = demoTemplateData["demo-template"];
+				console.log(data);
+				console.log(data[5]);
 
-				// If the user selected the starter template.
-				if(selectedTemplate != null){
-					
+				// First, clear out anything that might already be in the timelineState array.
+				for (let i = 0; i < timelineState.value.length; i++) {
+					// Skip the first 2 fall/winter semesters, as they are already filled with courses that shouldnt be deleted.
+					if (i != 0 && i != 1 && i != 4 && i != 5) {
+						// Erase all other data.
+						timelineState.value[i] = [];
+					}
 
-					// Extract the "demo-template" object
-					let data = demoTemplateData['demo-template'];
-					console.log(data);
-					console.log(data[5]);
-						
-					// First, clear out anything that might already be in the timelineState array.
-					for(let i = 0; i < timelineState.value.length; i++){
-						
-						// Skip the first 2 fall/winter semesters, as they are already filled with courses that shouldnt be deleted.
-						if(i != 0 && i != 1 && i != 4 && i != 5){
-							
-							// Erase all other data.
-							timelineState.value[i] = [];
-						}
+					// If there is any data at this semester in the demo template, add it to the timelineState array.
 
-						// If there is any data at this semester in the demo template, add it to the timelineState array.
-						
-						// These are the semesters we know we are adding to the timelineState array.
-						if(i >= 5 && i < 18){
-							
-							// For each course,
-							for(let j = 0; j < data[i].length; j++){
-								
-								// Add the course to the timelineState array.
-								timelineState.value[i].push(data[i][j]);
-							}
-	
+					// These are the semesters we know we are adding to the timelineState array.
+					if (i >= 5 && i < 18) {
+						// For each course,
+						for (let j = 0; j < data[i].length; j++) {
+							// Add the course to the timelineState array.
+							timelineState.value[i].push(data[i][j]);
 						}
 					}
+				}
 				// Check every course to see if "non-science" or "non-major-field" is in the timelineState array.
-				for(let i = 0; i < timelineState.value.length; i++){
-			for(let j = 0; j < timelineState.value[i].length; j++){
-				if(timelineState.value[i][j].course === "Non-Science Option"){
-					addWarning("In "+ getSemesterName(i)+ " you have not selected a non-science option. Please click the course block to select one.");
-
-				}
-				if(timelineState.value[i][j].course === "Non-Major Field Option"){
-					addWarning("In "+ getSemesterName(i)+ "You have not selected a non-major field option. Please click the course block to select one.");
-
-				}
-			}
-		}
-					// Finally change the number of semesters to render to show all the courses.
-					console.log("timelineState after loading template:" + timelineState.value);
-
-					// Persist the change
-					numSemestersToRender.value = 16;
-					localStorage.setItem(
-						"numSemestersToRender",
-						numSemestersToRender.value
-					); 
-
-					loadTemplateDialog.value = false;
-
-					// Persist the change
-					localStorage.setItem(
-						"timelineState",
-						JSON.stringify(timelineState.value)
-					); 
-
-					
-				}			
-			};
-
-			const saveTemplate = () => {
-				// Save the current timelineState to local storage or send it to the server
-				const templateData = JSON.stringify(timelineState.value);
-				localStorage.setItem("savedTemplate", templateData);
-				alert("Template saved successfully!");
-			};
-
-			const removeCourse = (course) => {
-				// Remove the course from the timelineState array
-				for(let i = 0; i < timelineState.value.length; i++) {
-					const semester = timelineState.value[i];
-					const courseIndex = semester.findIndex(
-						(courseObj) => courseObj.course === course
-					);
-					if (courseIndex !== -1) {
-						semester.splice(courseIndex, 1); // Remove the course
-						break; // Stop searching once found
+				for (let i = 0; i < timelineState.value.length; i++) {
+					for (let j = 0; j < timelineState.value[i].length; j++) {
+						if (timelineState.value[i][j].course === "Non-Science Option") {
+							addWarning(
+								"In " +
+									getSemesterName(i) +
+									" you have not selected a non-science option. Please click the course block to select one."
+							);
+						}
+						if (timelineState.value[i][j].course === "Non-Major Field Option") {
+							addWarning(
+								"In " +
+									getSemesterName(i) +
+									"You have not selected a non-major field option. Please click the course block to select one."
+							);
+						}
 					}
 				}
+				// Finally change the number of semesters to render to show all the courses.
+				console.log(
+					"timelineState after loading template:" + timelineState.value
+				);
+
+				// Persist the change
+				numSemestersToRender.value = 16;
+				localStorage.setItem(
+					"numSemestersToRender",
+					numSemestersToRender.value
+				);
+
+				loadTemplateDialog.value = false;
+
 				// Persist the change
 				localStorage.setItem(
 					"timelineState",
 					JSON.stringify(timelineState.value)
-				); 
+				);
 			}
+		};
 
-			const getRoute = (course) => {
-				console.log("Course Clicked:" + course);
+		const saveTemplate = () => {
+			// Save the current timelineState to local storage or send it to the server
+			const templateData = JSON.stringify(timelineState.value);
+			localStorage.setItem("savedTemplate", templateData);
+			alert("Template saved successfully!");
+		};
 
-				if(course==="Non-Major Field Option"){
-					return { name: "non-major-field-choice" };
+		const removeCourse = (course) => {
+			// Remove the course from the timelineState array
+			for (let i = 0; i < timelineState.value.length; i++) {
+				const semester = timelineState.value[i];
+				const courseIndex = semester.findIndex(
+					(courseObj) => courseObj.course === course
+				);
+				if (courseIndex !== -1) {
+					semester.splice(courseIndex, 1); // Remove the course
+					break; // Stop searching once found
 				}
+			}
+			// Persist the change
+			localStorage.setItem(
+				"timelineState",
+				JSON.stringify(timelineState.value)
+			);
+		};
 
-				else if(course==="Non-Science Option"){
-					return { name: "non-science-choice" };
-				}
-				else{
-					return { name: "course-overview", params: { courseId: course } };
-				}
+		const getRoute = (course) => {
+			console.log("Course Clicked:" + course);
 
-			};
+			if (course === "Non-Major Field Option") {
+				return { name: "non-major-field-choice" };
+			} else if (course === "Non-Science Option") {
+				return { name: "non-science-choice" };
+			} else {
+				return { name: "course-overview", params: { courseId: course } };
+			}
+		};
 		return {
 			warningLogs,
 			timelineState,
@@ -944,10 +1058,8 @@ export default {
 			getRoute,
 		};
 	},
-	
 
 	methods: {
-
 		// Function to update the timeline state with sorted courses
 		updateTimelineState() {
 			// console.log(this.user.pastCourses);
@@ -1010,7 +1122,6 @@ export default {
 		// }
 	},
 	mounted() {
-
 		axios
 			.get("http://localhost:3000/api/courses") // adjust this path as needed
 			.then((response) => {
@@ -1101,27 +1212,27 @@ export default {
 }
 
 .gray-btn {
-  background-color: gray !important;
-  color: white !important;
+	background-color: gray !important;
+	color: white !important;
 }
 
 .big-btn {
-  font-size: 1.5rem !important;
-  padding: 24px 24px !important;
+	font-size: 1.5rem !important;
+	padding: 24px 24px !important;
 }
 
 .strikethrough {
-	box-shadow: 0px 0px 10px 2px rgba(1,1, 1, 1);
+	box-shadow: 0px 0px 10px 2px rgba(1, 1, 1, 1);
 	animation: glowAnimation 0.5s infinite alternate;
 }
 
 @keyframes glowAnimation {
-  from {
-    box-shadow: 0px 0px 5px 2px rgb(100, 66, 96);
-  }
-  to {
-    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 1);
-  }
+	from {
+		box-shadow: 0px 0px 5px 2px rgb(100, 66, 96);
+	}
+	to {
+		box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 1);
+	}
 }
 
 .drop-zone {
@@ -1135,7 +1246,7 @@ export default {
 	min-height: 50px; /* Set a minimum height for the drop zone */
 	min-width: 120px; /* Set a minimum width for the drop zone */
 	flex-direction: row;
-	opacity:0.9;
+	opacity: 0.9;
 }
 
 .scrollable-column {
@@ -1194,24 +1305,29 @@ export default {
 
 /* Make the course button highlight on hover */
 .course-btn {
-  transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
 }
 
 .course-btn:hover {
-  background-color: #f0f0f0; /* Or your desired hover effect */
-  color: black; /* Change text color on hover */
+	background-color: #f0f0f0; /* Or your desired hover effect */
+	color: black; /* Change text color on hover */
 }
 
 /* Make the delete button hover independently without triggering course button's hover */
 .delete-btn-container {
-  pointer-events: auto; /* Allow interaction with the delete button */
+	pointer-events: auto; /* Allow interaction with the delete button */
 }
 
 .delete-btn-container:hover .delete-btn {
-  background-color: rgba(255, 0, 0, 0.2); /* Add a subtle background when hovering delete button */
+	background-color: rgba(
+		255,
+		0,
+		0,
+		0.2
+	); /* Add a subtle background when hovering delete button */
 }
 
 .delete-btn-container:hover .course-btn {
-  pointer-events: none; /* Disable hover interaction with course button when hovering delete button */
+	pointer-events: none; /* Disable hover interaction with course button when hovering delete button */
 }
 </style>
