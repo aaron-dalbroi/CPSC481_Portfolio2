@@ -635,7 +635,7 @@ export default {
 	setup() {
 		const warningLogs = ref("");
 		const addWarning = (message) => {
-			warningLogs.value += `\n⚠️ ${message}⚠️`;
+			warningLogs.value += `\n⚠️ ${message}`;
 		};
 		// The semesters are hard-coded, heres the names for each array index in timelineState
 		const semesterNames = [
