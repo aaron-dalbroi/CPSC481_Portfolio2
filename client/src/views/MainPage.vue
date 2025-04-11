@@ -486,6 +486,14 @@ export default {
 
 		// Method to initialize timelineState with 32 sub-arrays
 		const initializeTimelineState = () => {
+			
+			// Check if timelineState is already in localStorage
+			if(JSON.parse(localStorage.getItem("timelineState")) != null){
+				timelineState.value = JSON.parse(localStorage.getItem("timelineState"));
+				return;
+			}
+
+			// If not, initialize it with empty arrays
 			timelineState.value = Array.from({ length: 32 }, () => []);
 
 			// These values are the ones that should always be in the timeline, and shouldn't be changed.
@@ -566,6 +574,12 @@ export default {
 			timelineState.value[5].push({	"course": "CPSC371",
 											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});	
+
+			// Persist the change
+			localStorage.setItem(
+				"timelineState",
+				JSON.stringify(timelineState.value)
+			); 
 		};										
 
 		// Method to fetch user data
@@ -647,6 +661,12 @@ export default {
 			if (movedCourse) {
 				// Add the extracted course object to the new semester
 				timelineState.value[semesterIndex].push(movedCourse);
+				
+				// Persist the change
+				localStorage.setItem(
+					"timelineState",
+				JSON.stringify(timelineState.value)
+			); 
 			}
 
 			console.log("Updated timelineState:", timelineState.value);
@@ -729,10 +749,30 @@ export default {
 
 					// Finally change the number of semesters to render to show all the courses.
 					console.log("timelineState after loading template:" + timelineState.value);
+
+					// Persist the change
 					numSemestersToRender.value = 16;
+					localStorage.setItem(
+						"numSemestersToRender",
+						numSemestersToRender.value
+					); 
 
 					loadTemplateDialog.value = false;
+
+					// Persist the change
+					localStorage.setItem(
+						"timelineState",
+						JSON.stringify(timelineState.value)
+					); 
+					
 				}			
+			};
+
+			const saveTemplate = () => {
+				// Save the current timelineState to local storage or send it to the server
+				const templateData = JSON.stringify(timelineState.value);
+				localStorage.setItem("savedTemplate", templateData);
+				alert("Template saved successfully!");
 			};
 
 		return {
@@ -750,6 +790,7 @@ export default {
 			removeSemester,
 			loadTemplate,
 			loadTemplateDialog,
+			saveTemplate,
 		};
 	},
 
