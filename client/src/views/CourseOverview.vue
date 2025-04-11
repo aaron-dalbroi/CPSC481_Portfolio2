@@ -293,16 +293,16 @@ export default {
 			
 			const courseId = this.$route.params.courseId;
 			const response = await axios.get(
-				`https://cpsc481-portfolio2.onrender.com/api/courses/${courseId}`
+				`http://localhost:3000/api/courses/${courseId}`
 			);
 			this.course = response.data;
 
 			const allCoursesResponse = await axios.get(
-				"https://cpsc481-portfolio2.onrender.com/api/courses"
+				"http://localhost:3000/api/courses"
 			);
 			this.courseData = allCoursesResponse.data;
 
-			const userResponse = await axios.get("https://cpsc481-portfolio2.onrender.com/api/users/1"); // Adjust user ID as needed
+			const userResponse = await axios.get("http://localhost:3000/api/users/1"); // Adjust user ID as needed
 			this.userData = userResponse.data;
 
 			this.setTreeData();
@@ -384,7 +384,7 @@ export default {
 			try {
 				const courseId = "CPSC100";
 				const response = await axios.get(
-					`https://cpsc481-portfolio2.onrender.com/api/courses/${courseId}`
+					`http://localhost:3000/api/courses/${courseId}`
 				);
 				this.course = response.data;
 			} catch (error) {
