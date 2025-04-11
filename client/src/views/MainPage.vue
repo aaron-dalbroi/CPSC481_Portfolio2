@@ -343,123 +343,228 @@
 								<v-col class="d-flex justify-end align-center"> 33 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
+
 						<v-expansion-panel-text>
-							<v-table>
-								<thead>
-									<tr>
-										<th>Prerequisite(s)</th>
-										<th>Course</th>
-										<th>Grade</th>
-										<th>Credits</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 190</td>
-										<td>B+</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 180</td>
-										<td>B+</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>MATH 211</td>
-										<td>B-</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 251</td>
-										<td>C+</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 233</td>
-										<td>A</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 225</td>
-										<td>A+</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 277</td>
-										<td>A-</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>PHIL 279</td>
-										<td>A</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>MATH 249</td>
-										<td>A-</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-									<tr>
-										<td>
-											<v-icon color="green"> mdi-check-circle </v-icon>
-										</td>
-										<td>CPSC 231</td>
-										<td>A+</td>
-										<td>3</td>
-										<td><v-chip color="green">Completed</v-chip></td>
-									</tr>
-								</tbody>
-							</v-table>
+
+							<v-expansion-panels multiple>
+							<v-container>
+									<v-expansion-panels multiple>
+									<!-- Computer Science (200-level) -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Computer Science (200-level) </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+										<v-table>
+											<thead>
+											<tr>
+												<th>Prerequisite(s)</th>
+												<th>Course</th>
+												<th>Grade</th>
+												<th>Credits</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 251</td>
+												<td>C+</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 225</td>
+												<td>A+</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 277</td>
+												<td>A-</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											</tbody>
+										</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+
+									<!-- Computer Science (100-level) -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Computer Science (100-level) </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 9 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+										<v-table>
+											<thead>
+											<tr>
+												<th>Prerequisite(s)</th>
+												<th>Course</th>
+												<th>Grade</th>
+												<th>Credits</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 190</td>
+												<td>B+</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 180</td>
+												<td>B+</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>CPSC 231</td>
+												<td>A+</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											</tbody>
+										</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+
+									<!-- Mathematics -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Mathematics </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 6 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+										<v-table>
+											<thead>
+											<tr>
+												<th>Prerequisite(s)</th>
+												<th>Course</th>
+												<th>Grade</th>
+												<th>Credits</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>MATH 211</td>
+												<td>B-</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>MATH 249</td>
+												<td>A-</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											</tbody>
+										</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+
+									<!-- Non-Major Field Options -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Non-Major Field Options </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+										<v-table>
+											<thead>
+											<tr>
+												<th>Prerequisite(s)</th>
+												<th>Course</th>
+												<th>Grade</th>
+												<th>Credits</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td><v-icon color="green">mdi-check-circle</v-icon></td>
+												<td>PHIL 279</td>
+												<td>A</td>
+												<td>3</td>
+												<td><v-chip color="green">Completed</v-chip></td>
+											</tr>
+											</tbody>
+										</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+									</v-expansion-panels>
+								</v-container>
+  
+							<v-expansion-panel-text>
+
+
+							</v-expansion-panel-text>
+								
+
+
+							</v-expansion-panels>
+
 						</v-expansion-panel-text>
 					</v-expansion-panel>
+					
+					
 					<v-expansion-panel>
 						<v-expansion-panel-title>
 							<v-row>
 								<v-col class="d-flex justify-left">
-									<v-chip color="warning" label> In Progress </v-chip>
+									<v-chip color="warning" label> Currently Enrolled </v-chip>
 								</v-col>
-								<v-col class="d-flex justify-end align-center"> 15 / 66 </v-col>
+								<v-col class="d-flex justify-end align-center"> 33 / 66 </v-col>
 							</v-row>
 						</v-expansion-panel-title>
+
 						<v-expansion-panel-text>
-							<v-table>
+
+							<v-expansion-panels multiple>
+							<v-container>
+									<v-expansion-panels multiple>
+									<!-- Computer Science (200-level) -->
+
+
+									<!-- Computer Science (100-level) -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Computer Science (300-level) </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 18 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+											<v-table>
 								<thead>
 									<tr>
 										<th>Prerequisite(s)</th>
@@ -470,15 +575,17 @@
 									</tr>
 								</thead>
 								<tbody>
+
 									<tr>
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>CPSC 430</td>
+										<td>CPSC 340</td>
 										<td>-</td>
 										<td>3</td>
 										<td><v-chip color="yellow">In Progress</v-chip></td>
 									</tr>
+
 									<tr>
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
@@ -492,7 +599,7 @@
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>ECON 201</td>
+										<td>CPSC 371</td>
 										<td>-</td>
 										<td>3</td>
 										<td><v-chip color="yellow">In Progress</v-chip></td>
@@ -501,35 +608,53 @@
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>STATS 251</td>
+										<td>CPSC 338</td>
 										<td>-</td>
 										<td>3</td>
 										<td><v-chip color="yellow">In Progress</v-chip></td>
 									</tr>
+
+
 									<tr>
 										<td>
 											<v-icon color="green"> mdi-check-circle </v-icon>
 										</td>
-										<td>CPSC 351</td>
+										<td>CPSC 353</td>
 										<td>-</td>
 										<td>3</td>
 										<td><v-chip color="yellow">In Progress</v-chip></td>
+
+
+									</tr>
+
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>CPSC 319</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+
+
 									</tr>
 								</tbody>
 							</v-table>
-						</v-expansion-panel-text>
-					</v-expansion-panel>
-					<v-expansion-panel>
-						<v-expansion-panel-title>
-							<v-row>
-								<v-col class="d-flex justify-left">
-									<v-chip color="error" label> Incomplete </v-chip>
-								</v-col>
-								<v-col class="d-flex justify-end align-center"> 18 / 66 </v-col>
-							</v-row>
-						</v-expansion-panel-title>
-						<v-expansion-panel-text>
-							<v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+
+									<!-- Mathematics -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Mathematics </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+											<v-table>
 								<thead>
 									<tr>
 										<th>Prerequisite(s)</th>
@@ -540,52 +665,149 @@
 									</tr>
 								</thead>
 								<tbody>
+
 									<tr>
-										<td><v-icon color="green"> mdi-check-circle </v-icon></td>
-										<td>CPSC 599</td>
-										<td>F</td>
-										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
-									</tr>
-									<tr>
-										<td>CPSC 251</td>
-										<td>CPSC 433</td>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>MATH 375</td>
 										<td>-</td>
 										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
 									</tr>
-									<tr>
-										<td>CPSC 233, MATH 249</td>
-										<td>CPSC 355</td>
-										<td>-</td>
-										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
-									</tr>
-									<tr>
-										<td>PHIL 279, STATS 251</td>
-										<td>PHIL 413</td>
-										<td>-</td>
-										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
-									</tr>
-									<tr>
-										<td>MATH 355</td>
-										<td>MATH 359</td>
-										<td>-</td>
-										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
-									</tr>
-									<tr>
-										<td>CPSC 231</td>
-										<td>CPSC 530</td>
-										<td>-</td>
-										<td>3</td>
-										<td><v-chip color="red">Incomplete</v-chip></td>
-									</tr>
+
+
 								</tbody>
 							</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Statistics </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+											<v-table>
+								<thead>
+									<tr>
+										<th>Prerequisite(s)</th>
+										<th>Course</th>
+										<th>Grade</th>
+										<th>Credits</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>STATS 251</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+
+
+								</tbody>
+							</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+									<!-- Non-Major Field Options -->
+									<v-expansion-panel>
+										<v-expansion-panel-title>
+										<v-row>
+											<v-col class="d-flex justify-left">
+											<v-chip label> Non-Major Field Options </v-chip>
+											</v-col>
+											<v-col class="d-flex justify-end align-center"> 3 / 66 </v-col>
+										</v-row>
+										</v-expansion-panel-title>
+										<v-expansion-panel-text>
+										<v-table>
+											<thead>
+									<tr>
+										<th>Prerequisite(s)</th>
+										<th>Course</th>
+										<th>Grade</th>
+										<th>Credits</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<td>
+											<v-icon color="green"> mdi-check-circle </v-icon>
+										</td>
+										<td>ART 130</td>
+										<td>-</td>
+										<td>3</td>
+										<td><v-chip color="yellow">In Progress</v-chip></td>
+									</tr>
+
+
+								</tbody>
+										</v-table>
+										</v-expansion-panel-text>
+									</v-expansion-panel>
+									</v-expansion-panels>
+								</v-container>
+  
+							<v-expansion-panel-text>
+
+
+							</v-expansion-panel-text>
+								
+
+
+							</v-expansion-panels>
+
 						</v-expansion-panel-text>
 					</v-expansion-panel>
+					
+					
+					
+					<v-expansion-panel>
+						<v-expansion-panel-title>
+							<v-row>
+								<v-col class="d-flex justify-left">
+									<v-chip color="error" label> Not Completed </v-chip>
+								</v-col>
+								<v-col class="d-flex justify-end align-center"> 33 / 66 </v-col>
+							</v-row>
+						</v-expansion-panel-title>
+
+						<v-expansion-panel-text>
+
+							<v-expansion-panels multiple>
+							
+								Same idea as above, but for the courses that are not completed.
+							<v-expansion-panel-text>
+
+
+							</v-expansion-panel-text>
+								
+
+
+							</v-expansion-panels>
+
+						</v-expansion-panel-text>
+					</v-expansion-panel>
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				</v-expansion-panels>
 			</v-col>
 		</v-row>
@@ -1347,13 +1569,13 @@ export default {
 	width: auto;
 	height: auto;
 	margin: 50px auto;
-	background-color: gray;
+	background-color: darkred;
 	border-radius: 10px;
 	padding: 10px;
 	min-height: 50px; /* Set a minimum height for the drop zone */
 	min-width: 120px; /* Set a minimum width for the drop zone */
 	flex-direction: row;
-	opacity: 0.9;
+	opacity: 1;
 }
 
 .scrollable-column {
