@@ -5,7 +5,7 @@
 			"displayName": "John Doe",
 			"email": "johndoe@example.com",
 			"password": "hashedpassword",
-			"yearOfProgram": 3,
+			"yearOfProgram": 2,
 			"programName": "Computer Science",
 			"currentCourses": [
 				{

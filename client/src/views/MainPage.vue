@@ -1111,16 +1111,16 @@ export default {
 }
 
 .strikethrough {
-	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0);
-	animation: glowAnimation 1.5s infinite alternate;
+	box-shadow: 0px 0px 10px 2px rgba(1,1, 1, 1);
+	animation: glowAnimation 0.5s infinite alternate;
 }
 
 @keyframes glowAnimation {
   from {
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 5px 2px rgb(100, 66, 96);
   }
   to {
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 1);
   }
 }
 
