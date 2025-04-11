@@ -44,6 +44,25 @@
 						</v-expansion-panels>
 					</v-card-text>
 
+
+					<v-card-text>
+						<h3 class="mb-3">What is...</h3>
+
+						<v-expansion-panels>
+							<v-expansion-panel
+								v-for="(content, title) in whatIsContent"
+								:key="title"
+							>
+								<v-expansion-panel-title>{{ title }}</v-expansion-panel-title>
+								<v-expansion-panel-text>
+									{{ content }}
+								</v-expansion-panel-text>
+							</v-expansion-panel>
+						</v-expansion-panels>
+					</v-card-text>
+
+
+
 					<v-card-text>
 						<h3 class="mb-3">How do I...</h3>
 
@@ -394,6 +413,12 @@ export default {
 			searchQuery: "",
 			allCourses: [], // will load from backend
 			helpDialog: false,
+			whatIsContent:{
+				"the Timeline?":"This is a visual representation of your course schedule. You can drag and drop courses here to plan out your schedule.",
+				"the \"Actions Required\" box?" :"This will show you any actions you need to take, such as enrolling in courses or completing prerequisites.",
+				"the \"Search for Courses\" bar?":"This allows you to search for courses to add to your timeline.",
+				"the Requirements Report?":"This is a comprehensive overview of your degree requirements and progress.",
+			},
 			helpContent: {
 				"Navigate between semesters":
 					"Use the left and right arrows to switch between semesters.",
