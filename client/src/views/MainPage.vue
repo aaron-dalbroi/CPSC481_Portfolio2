@@ -138,9 +138,9 @@
 					>
 						<template v-slot:icon>
 							<v-avatar
-								:color="
-									getSemesterIconColor(numSemestersToRender - semester - 1)
-								"
+  								:class="{ 'big-btn': numSemestersToRender - semester - 1 === 5, 
+										'strikethrough': numSemestersToRender - semester - 1 === 5 }" 
+								:color="getSemesterIconColor(numSemestersToRender - semester - 1)"
 							>
 								<!-- Shrink circle on collapse -->
 							</v-avatar>
@@ -179,6 +179,8 @@
 											}"
 											block
 											class="course-btn"
+											:class="{ 'gray-btn': (numSemestersToRender-semester-1) < 6 }"
+
 										>
 											<!-- Course Title and Icon centered -->
 											<div class="d-flex justify-center align-center">
@@ -614,11 +616,24 @@ export default {
 					(course) => course.course === course_code
 				);
 				if (courseIndex !== -1) {
+
+					// These semesters hold completed and enrolled courses. We dont want to move those.
+					if(i == 0 || i == 1 || i == 4 || i == 5){
+						alert("Cannot Move Completed or Enrolled Courses in the Timeline.");
+						return;
+					}
+
 					movedCourse = semester.splice(courseIndex, 1)[0]; // Extract the full object
 					break; // Stop searching once found
 				}
 			}
 			
+			// Check if the semester is in the past (index < 6)
+			if(semesterIndex < 6){
+				alert("Cannot move courses into past semesters.");
+				return;
+			}
+
 			// This handles the case where we are moving a course from the search results.
 			if(movedCourse == null){
 
@@ -896,6 +911,30 @@ export default {
 .v-btn:hover {
 	background-color: darkslategray; /* Darker shade on hover */
 	color: white;
+}
+
+.gray-btn {
+  background-color: gray !important;
+  color: white !important;
+}
+
+.big-btn {
+  font-size: 1.5rem !important;
+  padding: 24px 24px !important;
+}
+
+.strikethrough {
+	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0);
+	animation: glowAnimation 1.5s infinite alternate;
+}
+
+@keyframes glowAnimation {
+  from {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 1);
+  }
+  to {
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 1);
+  }
 }
 
 .drop-zone {
