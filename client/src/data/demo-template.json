@@ -1,0 +1,54 @@
+{
+    "demo-template": {
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [
+        {"course": "CS231", "semester": "Fall 2026", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC233", "semester": "Fall 2026", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC251", "semester": "Fall 2026", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC331", "semester": "Fall 2026", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC351", "semester": "Fall 2026", "completionStatus": "Not Enrolled"}
+      ],
+      "9": [
+        {"course": "CPSC355", "semester": "Winter 2027", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC413", "semester": "Winter 2027", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC449", "semester": "Winter 2027", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC457", "semester": "Winter 2027", "completionStatus": "Not Enrolled"},
+        {"course": "SENG300", "semester": "Winter 2027", "completionStatus": "Not Enrolled"}
+      ],
+      "10": [],
+      "11": [],
+      "12": [
+        {"course": "MATH211", "semester": "Fall 2027", "completionStatus": "Not Enrolled"},
+        {"course": "MATH249", "semester": "Fall 2027", "completionStatus": "Not Enrolled"},
+        {"course": "PHIL279", "semester": "Fall 2027", "completionStatus": "Not Enrolled"},
+        {"course": "PHIL314", "semester": "Fall 2027", "completionStatus": "Not Enrolled"},
+        {"course": "Non-Science Option", "semester": "Fall 2027", "completionStatus": "Not Enrolled"}
+      ],
+      "13": [
+        {"course": "CPSC440", "semester": "Winter 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC441", "semester": "Winter 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC444", "semester": "Winter 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC501", "semester": "Winter 2028", "completionStatus": "Not Enrolled"},
+        {"course": "Non-Major Field Option", "semester": "Winter 2028", "completionStatus": "Not Enrolled"}
+      ],
+      "14": [],
+      "15": [],
+      "16": [
+        {"course": "CPSC555", "semester": "Fall 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC557", "semester": "Fall 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC540", "semester": "Fall 2028", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC533", "semester": "Fall 2028", "completionStatus": "Not Enrolled"},
+        {"course": "Non-Major Field Option", "semester": "Fall 2028", "completionStatus": "Not Enrolled"}
+      ],
+      "17": [
+        {"course": "CPSC600", "semester": "Winter 2029", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC601", "semester": "Winter 2029", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC602", "semester": "Winter 2029", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC605", "semester": "Winter 2029", "completionStatus": "Not Enrolled"},
+        {"course": "CPSC(500 level or higher)", "semester": "Winter 2029", "completionStatus": "Not Enrolled"}
+      ]
+    }
+  }
+  

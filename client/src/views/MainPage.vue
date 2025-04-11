@@ -357,7 +357,8 @@
 <script>
 import axios from "axios";
 import {ref, onMounted,computed} from "vue";
-import { load } from "webfontloader";
+import demoTemplateData from '@/data/demo-template.json'
+
 export default {
 	name: "MainPage",
 	data() {
@@ -423,10 +424,10 @@ export default {
 			timelineState.value[0].push({	"course": "PHIL279",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "Non-Science Option",
+			timelineState.value[0].push({	"course": "CPSC277",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
-			timelineState.value[0].push({	"course": "Non-Science Option",
+			timelineState.value[0].push({	"course": "CPSC225",
 											"semester": "Fall 2024",
 											"completionStatus": "Completed"});
 			
@@ -448,21 +449,38 @@ export default {
 											"completionStatus": "Completed"});
 
 			// Fall 2025
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
+			timelineState.value[4].push({	"course": "CPSC338",
+											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
+			timelineState.value[4].push({	"course": "CPSC353",
+											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
+			timelineState.value[4].push({	"course": "ART130",
+											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});
-			timelineState.value[1].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
+			timelineState.value[4].push({	"course": "MATH375",
+											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});
-			timelineState.value[4].push({	"course": "CPSC100",
-											"semester": "Fall 2024",
+			timelineState.value[4].push({	"course": "CPSC319",
+											"semester": "Fall 2025",
 											"completionStatus": "In Progress"});
+						
+			// Winter 2026
+			timelineState.value[5].push({	"course": "CPSC340",
+											"semester": "Fall 2025",
+											"completionStatus": "In Progress"});
+			timelineState.value[5].push({	"course": "CPSC389",
+											"semester": "Fall 2025",
+											"completionStatus": "In Progress"});
+			timelineState.value[5].push({	"course": "ECON201",
+											"semester": "Fall 2025",
+											"completionStatus": "In Progress"});
+			timelineState.value[5].push({	"course": "STATS251",
+											"semester": "Fall 2025",
+											"completionStatus": "In Progress"});
+			timelineState.value[5].push({	"course": "CPSC371",
+											"semester": "Fall 2025",
+											"completionStatus": "In Progress"});	
 		};										
 
 		    // Method to fetch user data
@@ -556,14 +574,17 @@ export default {
 			};
 
 			// Load a bunch of courses into the timelineState array for demo purposes.
-			const loadTemplate = (selectedTemplate) => {
+			const loadTemplate = async (selectedTemplate) => {
 
-				
 				// If the user selected the starter template.
 				if(selectedTemplate != null){
 					
-					// Make timelineState the desired demo state.
-					
+
+					// Extract the "demo-template" object
+					let data = demoTemplateData['demo-template'];
+					console.log(data);
+					console.log(data[5]);
+						
 					// First, clear out anything that might already be in the timelineState array.
 					for(let i = 0; i < timelineState.value.length; i++){
 						
@@ -573,13 +594,28 @@ export default {
 							// Erase all other data.
 							timelineState.value[i] = [];
 						}
+
+						// If there is any data at this semester in the demo template, add it to the timelineState array.
+						
+						// These are the semesters we know we are adding to the timelineState array.
+						if(i >= 5 && i < 18){
+							
+							// For each course,
+							for(let j = 0; j < data[i].length; j++){
+								
+								// Add the course to the timelineState array.
+								timelineState.value[i].push(data[i][j]);
+							}
+	
+						}
 					}
 
+					// Finally change the number of semesters to render to show all the courses.
+					console.log("timelineState after loading template:" + timelineState.value);
+					numSemestersToRender.value = 16;
 
 					loadTemplateDialog.value = false;
-				}
-
-				
+				}			
 			};
 
 		return {
@@ -613,6 +649,7 @@ export default {
 			// console.log(this.user.pastCourses);
 			// console.log(this.groupedPastCourses);
 		}
+		
 	},
 
 	computed: {
