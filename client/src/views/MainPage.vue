@@ -1129,12 +1129,13 @@ export default {
 	width: auto;
 	height: auto;
 	margin: 50px auto;
-	background-color: lightgray;
+	background-color: gray;
 	border-radius: 10px;
 	padding: 10px;
 	min-height: 50px; /* Set a minimum height for the drop zone */
 	min-width: 120px; /* Set a minimum width for the drop zone */
 	flex-direction: row;
+	opacity:0.9;
 }
 
 .scrollable-column {
