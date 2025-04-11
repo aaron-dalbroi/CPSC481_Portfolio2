@@ -409,7 +409,6 @@ export default {
 	data() {
 		return {
 			user: {},
-			warningLogs: "",
 			searchQuery: "",
 			allCourses: [], // will load from backend
 			helpDialog: false,
@@ -436,6 +435,11 @@ export default {
 	},
 
 	setup() {
+
+		const warningLogs = ref("");
+		const addWarning = (message) =>{
+			warningLogs.value += `\n⚠️ ${message}⚠️`;
+		}
 		// The semesters are hard-coded, heres the names for each array index in timelineState
 		const semesterNames = [
 			"Fall 2024",
@@ -544,7 +548,7 @@ export default {
 
 					}
 
-					// clear the flag in local storage
+
 					localStorage.removeItem("non-science-flag");
 				}
 
@@ -563,11 +567,14 @@ export default {
 						}
 
 					}
-
-					// clear the flag in local storage
 					localStorage.removeItem("non-major-field-flag");
 				}
 
+				// Persist the change
+				localStorage.setItem(
+					"timelineState",
+					JSON.stringify(timelineState.value)
+				); 
 				return;
 			
 				
@@ -680,6 +687,20 @@ export default {
 		initializeTimelineState();
 
 		console.log(timelineState.value);
+	
+				// Check every course to see if "non-science" or "non-major-field" is in the timelineState array.
+				for(let i = 0; i < timelineState.value.length; i++){
+			for(let j = 0; j < timelineState.value[i].length; j++){
+				if(timelineState.value[i][j].course === "Non-Science Option"){
+					addWarning("In "+ getSemesterName(i)+ " you have not selected a non-science option. Please click the course block to select one.");
+
+				}
+				if(timelineState.value[i][j].course === "Non-Major Field Option"){
+					addWarning("In "+ getSemesterName(i)+ "You have not selected a non-major field option. Please click the course block to select one.");
+
+				}
+			}
+		}
 
 		const startDrag = (event, item) => {
 			console.log("start drag", item);
@@ -826,7 +847,19 @@ export default {
 	
 						}
 					}
+				// Check every course to see if "non-science" or "non-major-field" is in the timelineState array.
+				for(let i = 0; i < timelineState.value.length; i++){
+			for(let j = 0; j < timelineState.value[i].length; j++){
+				if(timelineState.value[i][j].course === "Non-Science Option"){
+					addWarning("In "+ getSemesterName(i)+ " you have not selected a non-science option. Please click the course block to select one.");
 
+				}
+				if(timelineState.value[i][j].course === "Non-Major Field Option"){
+					addWarning("In "+ getSemesterName(i)+ "You have not selected a non-major field option. Please click the course block to select one.");
+
+				}
+			}
+		}
 					// Finally change the number of semesters to render to show all the courses.
 					console.log("timelineState after loading template:" + timelineState.value);
 
@@ -844,6 +877,7 @@ export default {
 						"timelineState",
 						JSON.stringify(timelineState.value)
 					); 
+
 					
 				}			
 			};
@@ -890,6 +924,7 @@ export default {
 
 			};
 		return {
+			warningLogs,
 			timelineState,
 			initializeTimelineState,
 			user,
@@ -912,9 +947,6 @@ export default {
 	
 
 	methods: {
-		addWarning(message) {
-			this.warningLogs += `\n⚠️ ${message}⚠️`;
-		},
 
 		// Function to update the timeline state with sorted courses
 		updateTimelineState() {
@@ -978,17 +1010,14 @@ export default {
 		// }
 	},
 	mounted() {
-		// Call addWarning after the page is mounted
-		this.addWarning(
-			"Missing CPSC 331 in Dashboard. Drag and drop it from requirements report"
-		);
+
 		axios
 			.get("http://localhost:3000/api/courses") // adjust this path as needed
 			.then((response) => {
 				this.allCourses = response.data;
 			})
 			.catch(() => {
-				this.addWarning("Failed to load course data.");
+				console.log("Failed to load course data.");
 			});
 	},
 };
